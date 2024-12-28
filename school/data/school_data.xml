@@ -1,0 +1,41 @@
+
+
+<odoo>
+    <!--    by default data has noupdate=false-->
+
+    <record id="school_xml1" model="school.profile">
+        <field name="name"> Ahmed Xml</field>
+        <field name="email"> XmlSchool1@yahoo</field>
+        <field name="phone">01258965577</field>
+        <field name="school_type">public</field>
+    </record>
+
+    <record id="school_xml2" model="school.profile">
+        <field name="name"> Ayman Xml</field>
+        <field name="email"> XmlSchoo21@yahoo</field>
+        <field name="phone">012589657</field>
+        <field name="school_type">private</field>
+    </record>
+
+    <record id="school_xml3" model="school.profile">
+        <field name="name">Ziad Xml</field>
+        <field name="email"> XmlSchool1@yahoo</field>
+        <field name="phone">0757587</field>
+        <field name="school_type">public</field>
+    </record>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+

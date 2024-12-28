@@ -1,0 +1,441 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school_student
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0beta-20221012\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-24 12:57+0000\n"
+"PO-Revision-Date: 2024-01-24 12:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__address
+msgid "Address"
+msgstr "لعنوان"
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_search
+msgid "Archived"
+msgstr "أرشيف"
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__birth_date
+msgid "Birth Date"
+msgstr "تاريخ الميلاد"
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car_engines__car_id
+msgid "Car"
+msgstr "السيارة"
+
+#. module: school_student
+#: model:ir.ui.menu,name:school_student.car_engines_menu
+msgid "Car Engines"
+msgstr "خدمة السيرات"
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car__name
+#: model:ir.model.fields,field_description:school_student.field_car__price
+#: model:ir.model.fields,field_description:school_student.field_car_engines__price
+msgid "Car Name"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car_engines__name
+msgid "CarEngines"
+msgstr ""
+
+#. module: school_student
+#: code:addons/school_student/models/models.py:0
+#, python-format
+msgid "Clicked Successfully"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model,name:school_student.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: school_student
+#: model_terms:ir.actions.act_window,help:school_student.action_car_engines_view
+#: model_terms:ir.actions.act_window,help:school_student.action_school_hobby_view
+#: model_terms:ir.actions.act_window,help:school_student.action_school_student_view
+msgid "Create your first patient!"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car__create_uid
+#: model:ir.model.fields,field_description:school_student.field_car_engines__create_uid
+#: model:ir.model.fields,field_description:school_student.field_hobby__create_uid
+#: model:ir.model.fields,field_description:school_student.field_school_student__create_uid
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard__create_uid
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car__create_date
+#: model:ir.model.fields,field_description:school_student.field_car_engines__create_date
+#: model:ir.model.fields,field_description:school_student.field_hobby__create_date
+#: model:ir.model.fields,field_description:school_student.field_school_student__create_date
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard__create_date
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__currency_id
+#: model:ir.model.fields,field_description:school_student.field_school_student__user_id
+msgid "Currency"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Custom Button"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.student_fees_update_wizard_form
+msgid "Discard"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car__display_name
+#: model:ir.model.fields,field_description:school_student.field_car_engines__display_name
+#: model:ir.model.fields,field_description:school_student.field_hobby__display_name
+#: model:ir.model.fields,field_description:school_student.field_school_student__display_name
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard__display_name
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields.selection,name:school_student.selection__school_student__state__done
+msgid "Done"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields.selection,name:school_student.selection__school_student__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Facebook"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard__fees
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees__name
+msgid "Fees"
+msgstr ""
+
+#. module: school_student
+#: model:ir.actions.act_url,name:school_student.action_go_to_youtube
+#: model:ir.ui.menu,name:school_student.menu_go_to_youtube
+msgid "Go To Youtube"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_search
+msgid "Group By"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_hobby__name
+msgid "Hobbies"
+msgstr ""
+
+#. module: school_student
+#: model:ir.ui.menu,name:school_student.school_hobby_menu
+msgid "Hobby"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__hobby_ids
+msgid "Hoppy"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car__id
+#: model:ir.model.fields,field_description:school_student.field_car_engines__id
+#: model:ir.model.fields,field_description:school_student.field_hobby__id
+#: model:ir.model.fields,field_description:school_student.field_school_student__id
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard__id
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees__id
+msgid "ID"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_search
+msgid "Last 30 days (Month)"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_search
+msgid "Last 7 days (Weak)"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car____last_update
+#: model:ir.model.fields,field_description:school_student.field_car_engines____last_update
+#: model:ir.model.fields,field_description:school_student.field_hobby____last_update
+#: model:ir.model.fields,field_description:school_student.field_school_student____last_update
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard____last_update
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car__write_uid
+#: model:ir.model.fields,field_description:school_student.field_car_engines__write_uid
+#: model:ir.model.fields,field_description:school_student.field_hobby__write_uid
+#: model:ir.model.fields,field_description:school_student.field_school_student__write_uid
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard__write_uid
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_car__write_date
+#: model:ir.model.fields,field_description:school_student.field_car_engines__write_date
+#: model:ir.model.fields,field_description:school_student.field_hobby__write_date
+#: model:ir.model.fields,field_description:school_student.field_school_student__write_date
+#: model:ir.model.fields,field_description:school_student.field_student_fees_update_wizard__write_date
+#: model:ir.model.fields,field_description:school_student.field_student_test_fees__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: school_student
+#: model:ir.ui.menu,name:school_student.all_school_menu
+msgid "List"
+msgstr ""
+
+#. module: school_student
+#: model:ir.ui.menu,name:school_student.school_student_main_menu
+msgid "Menu 1"
+msgstr ""
+
+#. module: school_student
+#: model:ir.ui.menu,name:school_student.school_student_main_menu2
+msgid "Menu 2"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__name
+msgid "Name"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields.selection,name:school_student.selection__school_student__state__paid
+msgid "Paid"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Print Report Button"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields.selection,name:school_student.selection__school_student__state__progress
+msgid "Progress"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__roll_number
+msgid "Roll Number"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__school_st_id
+msgid "School"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "School Info"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_profile__school_list
+msgid "School List"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_search
+msgid "School Name"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_kanban
+msgid "School Name :"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model,name:school_student.model_school_profile
+msgid "School Profile"
+msgstr ""
+
+#. module: school_student
+#: model:ir.ui.menu,name:school_student.school_student_root_menu
+msgid "School Student"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_search
+msgid "School Student Details"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Send Email"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Special Command6 0 0"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__state
+msgid "State"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_kanban
+msgid "State :"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_calender_c
+msgid "Student"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_graph
+msgid "Student Analysis"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__student_fees
+msgid "Student Fees"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__student_image
+msgid "Student Image"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Student Profile"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__student_seq
+msgid "Student Seq"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model.fields,field_description:school_student.field_school_student__total_fees
+msgid "Total Fees"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.student_fees_update_wizard_form
+msgid "Update Fees"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Wizard Button Using object"
+msgstr ""
+
+#. module: school_student
+#: model_terms:ir.ui.view,arch_db:school_student.view_school_student_form
+msgid "Wizard Button from action type"
+msgstr ""
+
+#. module: school_student
+#: model:ir.ui.menu,name:school_student.wizard_menu
+msgid "Wizard Menu"
+msgstr ""
+
+#. module: school_student
+#: model:school.profile,name:school_student.school_xml9
+msgid "Xml School4"
+msgstr ""
+
+#. module: school_student
+#: model:school.profile,name:school_student.school_xml6
+msgid "Xml School6"
+msgstr ""
+
+#. module: school_student
+#: code:addons/school_student/models/models.py:0
+#, python-format
+msgid "can not be deleted"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model,name:school_student.model_car
+msgid "car"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model,name:school_student.model_car_engines
+msgid "car.engines"
+msgstr ""
+
+#. module: school_student
+#: model:ir.actions.act_window,name:school_student.action_car_engines_view
+msgid "car.engines.action"
+msgstr ""
+
+#. module: school_student
+#: model:ir.actions.act_window,name:school_student.action_school_hobby_view
+#: model:ir.model,name:school_student.model_hobby
+msgid "hobby"
+msgstr ""
+
+#. module: school_student
+#: model:ir.actions.act_window,name:school_student.action_school_student_view
+msgid "school"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model,name:school_student.model_school_student
+msgid "school_student.school_student"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model,name:school_student.model_student_fees_update_wizard
+msgid "student fees update wizard"
+msgstr ""
+
+#. module: school_student
+#: model:ir.model,name:school_student.model_student_test_fees
+msgid "student.test.fees"
+msgstr ""
+
+#. module: school_student
+#: model:ir.actions.act_window,name:school_student.student_fees_update_wizard_action
+msgid "student_fees_update_wizard"
+msgstr ""
+
+#. module: school_student
+#: model:ir.actions.act_window,name:school_student.student_fees_update_wizard_server_action_wiz
+msgid "wizard view"
+msgstr ""

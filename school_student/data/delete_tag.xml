@@ -1,0 +1,23 @@
+
+
+<odoo>
+
+    <delete id="student_xml2" model="school.student"/>
+<!--    <delete id="school.profile.school_xml3" model="school.profile"/>-->
+<!--    <delete id="car.engines.car_engines_menu" model="car.engines"/>-->
+     <delete model="hobby" search="[('name','=','Gym')]"/>
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+

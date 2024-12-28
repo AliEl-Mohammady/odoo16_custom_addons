@@ -1,0 +1,56 @@
+
+
+<odoo>
+
+    <record id="student_xml1" model="school.student">
+        <field name="name">Ahmed Xml</field>
+        <field name="address">ali@Xml</field>
+        <field name="school_st_id" ref="school.school_xml3" />
+<!--        <field name=field_name ref=xmlid />-->
+        <field name="hobby_ids" eval="[(6,0,[ref('h_1'),ref('h_3')])]"/>
+    </record>
+
+
+    <record id="student_xml3" model="school.student">
+        <field name="name">walid  Xml</field>
+        <field name="address"> Xml3 address</field>
+        <field name="school_st_id" ref="school.school_xml2" />
+    </record>
+
+<!--    first way to create one2many field-->
+    <record id="school_xml9" model="school.profile">
+        <field name="name">Xml School4</field>
+        <field name="email">XmlSchool1@yahoo</field>
+        <field name="phone">0757587</field>
+        <field name="school_type">public</field>
+    </record>
+
+    <record id="student_xml5" model="school.student">
+        <field name="name"> Xml Student4</field>
+        <field name="address"> Xml4 address</field>
+        <field name="school_st_id" ref="school_xml9" />
+    </record>
+
+
+<!--    second way to create one2many field-->
+    <record id="school_xml6" model="school.profile">
+        <field name="name">Ali Mo </field>
+        <field name="email">Xml@yahoo</field>
+        <field name="phone">075857587</field>
+        <field name="school_type">public</field>
+        <field name="school_list" eval="[(0,0,{'name':'student one2many','address':'in your way'}),
+                                        (0,0,{'name':'student one2many 2','address':'in your way1'})]"/>
+    </record>
+
+    <!--    the way to create many2many field-->
+    <record id="student_xml7" model="school.student">
+        <field name="name">Eyad Xml</field>
+        <field name="address">Xml address</field>
+        <field name="hobby_ids" eval="[(6,0,[ref('h_1'),ref('h_3'),ref('h_66')])]"/>
+    </record>
+
+    <function model="school.student" name="roll_number_change"/>
+<!--    <function model="school.student" name="roll_number_change" eval="(attr)"/>-->
+
+</odoo>
+

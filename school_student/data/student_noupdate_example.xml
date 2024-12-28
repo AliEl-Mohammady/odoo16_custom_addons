@@ -1,0 +1,24 @@
+
+
+<odoo noupdate="1">
+
+    <record id="student_xml01" model="school.student">
+        <field name="name"> Aya Xml no update</field>
+        <field name="address">Xml address</field>
+        <field name="hobby_ids" eval="[(6,0,[ref('h_4')])]"/>
+    </record>
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+
+
+<odoo noupdate="0">
+<!--    by default demo data has noupdate=true-->
+    <record id="school_xml01" model="school.profile">
+        <field name="name"> Demo School01</field>
+        <field name="email"> XmlSchool1@yahoo</field>
+        <field name="phone">01258965577</field>
+        <field name="school_type">public</field>
+    </record>
+
+    <record id="school_xml02" model="school.profile">
+        <field name="name"> Demo School02</field>
+        <field name="email"> XmlSchoo21@yahoo</field>
+        <field name="phone">012589657</field>
+        <field name="school_type">private</field>
+    </record>
+
+    <record id="school_xml03" model="school.profile">
+        <field name="name"> Demo School03</field>
+        <field name="email"> XmlSchool1@yahoo</field>
+        <field name="phone">0757587</field>
+        <field name="school_type">public</field>
+    </record>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+

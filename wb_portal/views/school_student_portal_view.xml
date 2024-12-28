@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    <template id="school_student_portal" inherit_id="portal.portal_my_home">-->
+<!--        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">-->
+<!--            <t t-call="portal.portal_docs_entry">-->
+
+<!--&lt;!&ndash;                <t t-set="url">/my/students</t>&ndash;&gt;-->
+<!--                <t t-set="title">School Student</t>-->
+<!--&lt;!&ndash;                <t t-set="placeholder_count" t-value="school_student"/>&ndash;&gt;-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+    <template inherit_id='portal.portal_my_home' id="school_student_portal">
+        <xpath expr='//div[hasclass("o_portal_docs")]' position='inside'>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="url">/my/students</t>
+                <t t-set="title">Students</t>
+            </t>
+        </xpath>
+    </template>
+</odoo>
+

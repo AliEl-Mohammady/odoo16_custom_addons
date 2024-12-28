@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_school_form" model="ir.ui.view">
+        <field name="name">school.view.form</field>
+        <field name="model">school.profile</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="special_command0_create_record" string="SC 0 0 vals" type="object"
+                                class="oe_highlight" icon="fa-light fa-bell"/>
+                        <button name="special_command1_update1" string="SC 1 id vals"
+                                type="object" icon="fa-solid fa-star"/>
+                        <button name="special_command2_remove_record_from_database" string="SC 2 id 0"
+                                type="object"
+                                class="oe_highlight" icon="fa-solid fa-filter"/>
+                        <button name="special_command3_remove_record_from_relation_field_not_permanent"
+                                string="SC 3 id 0" type="object" icon="fa-solid fa-pen-to-square"/>
+                        <button name="special_command4_add_existing_record_in_relation_field"
+                                string="SC 4 id 0" type="object"
+                                class="oe_highlight" icon="fa-solid fa-key"/>
+                        <button name="special_command5_remove_all__relation_records_not_permanent"
+                                string="SC 5 0 0" type="object" icon="fa-solid fa-truck-fast"/>
+                    </div>
+                    <hr/>
+                    <h1><field name="sequence_name" readonly="1"/></h1>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="password" password="1"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="is_virtual_class" readonly="0"/>
+                            <field name="result" string=" School Result"/>
+                            <field name="school_rank"/>
+                            <field name="address" required="1"/>
+                        </group>
+                        <group>
+                            <field name="open_date" required="1"/>
+                            <field name="establish_date" required="1"/>
+                            <field name="school_type" placeholder="Choose your school type"/>
+                            <field name="auto_rank"/>
+                        <field name="currency_id" attrs="{'invisible':[('school_rank','=',0)]}"/>
+<!--                        <field name="sequence_id"/>-->
+                        </group>
+                    </group>
+                    <group>
+                        <field name="document" filename="document_name"/>
+                        <field name="document_name" invisible="1"/>
+                        <field name="school_image" widget="image"/>
+                        <field name="description" widget="html"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_tree" model="ir.ui.view">
+        <field name="name">school.view.tree</field>
+        <field name="model">school.profile</field>
+        <field name="arch" type="xml">
+            <tree string="Lawyers Total Details" export_xlsx="0">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_school_view" model="ir.actions.act_window">
+        <field name="name">school</field>
+        <field name="res_model">school.profile</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="school_root_menu"
+            name="School"
+            sequence="1"
+            web_icon="school,static/description/icon.png"/>
+
+    <menuitem
+            id="school_main_menu"
+            name="School Profile"
+            parent="school_root_menu"
+            sequence="1"/>
+
+    <menuitem
+            id="all_school_menu"
+            name="All Schools"
+            parent="school_main_menu"
+            sequence="1"
+            action="action_school_view"/>
+
+    <record id="view_school_security_tree" model="ir.ui.view">
+        <field name="name">school.security.tree</field>
+        <field name="model">school.student.profile.security.example</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_school_security" model="ir.actions.act_window">
+        <field name="name">school.security</field>
+        <field name="res_model">school.student.profile.security.example</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="groups_id"  eval="[(4, ref('school.student_admin_group'))]"/>
+<!--        add group to action-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="all_school_security_menu"
+            name="School Security"
+            parent="school_main_menu"
+            sequence="1"
+            action="action_school_security"/>
+
+            <!-- Sequences for sale.order -->
+        <record id="seq_school" model="ir.sequence">
+            <field name="name">School Student</field>
+            <field name="code">school.student</field>
+            <field name="prefix">HP</field>
+            <field name="padding">4</field>
+            <field name="number_increment" eval="1"/>
+        </record>
+
+</odoo>

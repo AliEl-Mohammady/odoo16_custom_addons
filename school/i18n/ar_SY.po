@@ -1,0 +1,328 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0beta-20221012\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-24 02:43+0000\n"
+"PO-Revision-Date: 2024-01-24 02:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__address
+msgid "Address"
+msgstr "العنوان"
+
+#. module: school
+#: model:ir.ui.menu,name:school.all_school_menu
+msgid "All Schools"
+msgstr "كل المدارس"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__auto_rank
+msgid "Auto Rank"
+msgstr "معدل تلقائي"
+
+#. module: school
+#: model:ir.model.fields,help:school.field_school_profile__is_virtual_class
+msgid "Choose which the class is virtual or not"
+msgstr "اختر هل الفصول متاح او لا"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "Choose your school type"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.actions.act_window,help:school.action_school_security
+#: model_terms:ir.actions.act_window,help:school.action_school_view
+msgid "Create your first patient!"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__create_uid
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__create_uid
+#: model:ir.model.fields,field_description:school.field_sequence_test2__create_uid
+#: model:ir.model.fields,field_description:school.field_sequence_test__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__create_date
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__create_date
+#: model:ir.model.fields,field_description:school.field_sequence_test2__create_date
+#: model:ir.model.fields,field_description:school.field_sequence_test__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__description
+msgid "Description"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__display_name
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__display_name
+#: model:ir.model.fields,field_description:school.field_sequence_test2__display_name
+#: model:ir.model.fields,field_description:school.field_sequence_test__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__document
+msgid "Document"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__document_name
+msgid "Document Name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__email
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__email
+msgid "Email"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__establish_date
+msgid "Establish Date"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.school_group_access
+msgid "First Group"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__id
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__id
+#: model:ir.model.fields,field_description:school.field_sequence_test2__id
+#: model:ir.model.fields,field_description:school.field_sequence_test__id
+msgid "ID"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__is_virtual_class
+msgid "Is Virtual Class"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile____last_update
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example____last_update
+#: model:ir.model.fields,field_description:school.field_sequence_test2____last_update
+#: model:ir.model.fields,field_description:school.field_sequence_test____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__write_uid
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__write_uid
+#: model:ir.model.fields,field_description:school.field_sequence_test2__write_uid
+#: model:ir.model.fields,field_description:school.field_sequence_test__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__write_date
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__write_date
+#: model:ir.model.fields,field_description:school.field_sequence_test2__write_date
+#: model:ir.model.fields,field_description:school.field_sequence_test__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_tree
+msgid "Lawyers Total Details"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__name
+#: model:ir.model.fields,field_description:school.field_sequence_test2__name
+#: model:ir.model.fields,field_description:school.field_sequence_test__name
+msgid "Name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__open_date
+msgid "Open Date"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__phone
+#: model:ir.model.fields,field_description:school.field_school_student_profile_security_example__phone
+msgid "Phone"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_profile__school_type__private
+msgid "Private School"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_profile__school_type__public
+msgid "Public School"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__result
+msgid "Result"
+msgstr ""
+
+#. module: school
+#: model:ir.ui.menu,name:school.school_root_menu
+msgid "School"
+msgstr ""
+
+#. module: school
+#: model:ir.module.category,name:school.category_group
+msgid "School Groups"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__school_image
+msgid "School Image"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__name
+msgid "School Name"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_profile
+#: model:ir.ui.menu,name:school.school_main_menu
+msgid "School Profile"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__school_rank
+msgid "School Rank"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "School Result"
+msgstr ""
+
+#. module: school
+#: model:ir.ui.menu,name:school.all_school_security_menu
+msgid "School Security"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_student_profile_security_example
+msgid "School Student Profile"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__school_type
+msgid "School Type"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.school_group_access2
+msgid "Second Group"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_profile__sequence_name
+msgid "Sequence Name"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "Special Command  2 id 0"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "Special Command  5 0 0"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "Special Command 0 0 vals"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "Special Command 3 id 0"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "Special Command 4 id 0"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_form
+msgid "Special Command Update 1 id vals"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.student_admin_group
+msgid "Student Admin Group"
+msgstr ""
+
+#. module: school
+#: model:ir.module.category,name:school.category_student_group
+msgid "Student Groups"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.student_low_group
+msgid "Student Low Group"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.student_mid_group
+msgid "Student Mid Group"
+msgstr ""
+
+#. module: school
+#: model:ir.module.category,name:school.category_sub_student_group
+msgid "Student Sub Groups"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.school_group_access3
+msgid "Thired School Group"
+msgstr ""
+
+#. module: school
+#: model:res.groups,name:school.school_group_access4
+msgid "fourth School Group"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_view
+msgid "school"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_security
+msgid "school.security"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_sequence_test
+msgid "sequence.test"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_sequence_test2
+msgid "sequence.test2"
+msgstr ""

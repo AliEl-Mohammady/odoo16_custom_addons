@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Email template for reset password -->
+    <record id="student_template_emails" model="mail.template">
+        <field name="name">Student Template</field>
+        <field name="model_id" ref="school_student.model_school_student"/>
+        <field name="subject">Student Details</field>
+        <field name="email_from">{{ object.create_uid.email_formatted or ''}}</field>
+        <field name="email_to">{{ object.school_st_id.email }}</field>
+        <field name="partner_to">{{object.write_uid.partner_id.id or ''}}</field>
+        <field name="report_name">student_{{ object.name }}</field>
+        <!--                for using language of the current user-->
+        <field name="lang">{{ object.create_uid.lang }}</field>
+<!--        to add attachament to email -->
+        <field name="report_template" ref="qweb_header_footer_pdf_examples.student_header_footer_report_ids"/>
+        <field name="body_html" type="html">
+            <p valign="middle" align="left">
+                <t t-if="object.school_st_id.school_image">
+                    <img style="width: 150px; height: 150px; object-fit: cover;"
+                         t-attf-src="data:image/png;base64,{{object.school_st_id.school_image}}"/>
+                </t>
+                <t t-else="">
+                    <img style="width: 64px; height: 64px; object-fit: cover;"
+                         src="/email_template/static/description/icon.png"/>
+                </t>
+                <!--                <img t-attf-src="/logo.png?company={{ user.company_id.id }}"-->
+                <!--                     style="padding: 0px; margin: 0px; height: auto; width: 100px;" t-att-alt="user.company_id.name"/>-->
+            </p>
+            <table>
+                <tr>
+                    <th style=" background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; ">
+                        Name
+                    </th>
+                    <th>School</th>
+                    <th>Total Fees</th>
+                </tr>
+                <tr>
+                    <th>
+                        <t t-out="object.name"/>
+                    </th>
+                    <th>
+                        <t t-out="object.school_st_id.name"/>
+                    </th>
+                    <th>
+                        <t t-out="object.total_fees"/>
+                    </th>
+                </tr>
+            </table>
+            <t t-if="object.id == 1">
+                <t t-out="object.name"/>
+            </t>
+            <t t-elif="object.id == 2">
+                Hello
+                <t t-out="object.name"/>
+            </t>
+            <t t-else="">
+                Thanks
+                <t t-out="object.name"/>
+            </t>
+            <br/>
+            <t t-foreach="object.hobby_ids" t-as="rec">
+                <t t-out="rec_index+1"/>
+                :
+                <t t-out="rec.name"/>
+                <br/>
+            </t>
+            <br/>
+            <t t-set="abc" t-value="Ali"/>
+            <t t-out="abc"/>
+            <t t-set="a" t-value="object"/>
+            <t t-out="a.name"/>
+            <br/>
+            <t t-set="a" t-value="object"/>
+            <t t-out="a.return_string_inside_email_template()"/>
+            <br/>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>
+

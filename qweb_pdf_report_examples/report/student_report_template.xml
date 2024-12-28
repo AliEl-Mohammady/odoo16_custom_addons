@@ -1,0 +1,140 @@
+<odoo>
+    <template id="school_student_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="lang" t-value="doc.create_uid.lang"/>
+<!--                for using language of the current user-->
+                    <t t-call="qweb_pdf_report_examples.report_school_student_report_template_main" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_school_student_report_template_main">
+        <t t-call="web.external_layout">
+            <t t-set="doc" t-value="doc.with_context(lang=lang)" />
+            <div>
+                <h1>Hello from inside</h1>
+            </div>
+            <div>
+                <p t-esc="doc.name"/>
+                <p t-out="doc.name"/>
+                <h3 t-field="doc.name"/>
+                <span t-esc="doc.name"/>
+                <strong t-esc="doc.name"/>
+                <p t-if="doc.name == 'student one2many'">My name is
+                    <t t-esc="doc.name"/>
+                </p>
+                <p t-elif="doc.name == 'CSV Gemy'">Beauty
+                    <t t-esc="doc.name"/>
+                </p>
+                <p t-else="">
+                    <t t-esc="doc.name"/>
+                </p>
+                <br/>
+                <t t-set="abc" t-value="0"/>
+
+                <t t-foreach="doc.hobby_ids" t-as="rec">
+                    <h1>
+                        <p>
+<!--                            <span t-esc="rec_index+1"/>-->
+                            <t t-set="abc" t-value="abc +1"/>
+                            <t t-esc="abc"/>
+                            -
+                            <span t-esc="rec.name"/>
+                        </p>
+                    </h1>
+                    <p>Is this the first name :
+                        <t t-esc="rec_first"/>
+                    </p>
+                    <p>Is this the last name :
+                        <t t-esc="rec_last"/>
+                    </p>
+                    <p>Is this even or odd :
+                        <t t-esc="rec_parity"/>
+                    </p>
+                    <p>Is this even ? :
+                        <t t-esc="rec_even"/>
+                    </p>
+                    <p>Is this odd ? :
+                        <t t-esc="rec_odd"/>
+                    </p>
+                </t>
+                <t t-set="abc" t-value="Ali"/>
+                <t t-esc="abc"/>
+                <span t-att="{'style':'text-align: center;color: black;background-color: #23CADB;
+                        position: relative;display: block;font-size: 35px;'}">THanks God
+                </span>
+                <p t-attf-style="text-align: center;color: black;background-color: #23CADB;
+                        position: relative;display: block;font-size: 35px;">THanks God
+                </p>
+                <a t-att-href="doc.school_st_id.email">Go to Email</a>
+                <p t-att="{'style':'background-color: #23DB7C;font-size: 30px;text-align: center;color: black','href':'doc.school_st_id.email'}">
+                    <a t-att-href="doc.school_st_id.email">Go to Email</a>
+                </p>
+
+                <span t-attf-style="background-color: #{doc.roll_number}">
+                    The choosen Color is
+                    <t t-esc="doc.roll_number"/>
+                </span>
+                <p t-attf-style="background-color: {{doc.roll_number if doc.roll_number else red}};">
+                    The Right Color is
+                    <h1 t-esc="doc.roll_number"/>
+                </p>
+                <div t-if="doc.name" t-field="doc.name"
+                     t-options="{'widget': 'barcode', 'width': 200, 'height': 75, 'img_style': 'max-height:50pt;max-width:100%;', 'img_align': 'center'}"/>
+            </div>
+<!--            static image-->
+            <img  width="100" height="100" border="1"
+                 allt="Image not loading"
+                 src="/qweb_pdf_report_examples/static/description/icon.png"/>
+            <img  width="100" height="100" border="1"
+                 allt="Image not loading"
+                 src="https://scontent.fcai2-2.fna.fbcdn.net/v/t39.30808-6/368160921_1119379329021934_724432420486443560_n.jpg"/>
+            <div style="text-align:left padding-top 10px;">
+<!--                <img t-if="o.image" width="120" border="1"-->
+<!--                     class="round-circle"-->
+<!--                     t-att-src="image_data_uri(o.image)"/>-->
+                <img t-if="o.image" width="120" border="1"
+                     class="round-circle"
+                     t-attf-src ="data:image/gif;base64,${o.image}"/>
+                <img t-if="not o.image" width="120" border="1"
+                     class="round-circle"
+                     t-att-src="'/web/static/img/placeholder.png'"/>
+<!--                <span class="certification-company-logo" t-field="o.image"-->
+<!--                      t-options="{'widget': 'image','img_style': 'width:50px;height:50px'}" role="img"/>-->
+
+            </div>
+        </t>
+    </template>
+
+    <record id="paperformat_student" model="report.paperformat">
+        <field name="name">Student Paper Format</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="student_report_ids" model="ir.actions.report">
+        <field name="name">Student Report</field>
+        <field name="model">school.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">qweb_pdf_report_examples.school_student_report</field>
+        <field name="report_file">qweb_pdf_report_examples.school_student_report</field>
+        <field name="print_report_name">'Student Report'</field>
+        <field name="binding_model_id" ref="school_student.model_school_student"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="qweb_pdf_report_examples.paperformat_student"/>
+    </record>
+
+
+</odoo>

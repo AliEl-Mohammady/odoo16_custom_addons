@@ -1,0 +1,22 @@
+{
+    'name': "School",
+    'category': 'School',
+    'version': '1.1',
+    'sequence': -11,
+    'author': 'Ali Mohamed Mahmoud',
+    'summary': "School Management system",
+    'description': "School Management system",
+    'depends': ['base', 'sale'],
+    'data': [
+        'security/ir.model.access.csv',
+        # 'security/ir.model.access_using_groups.csv',
+        'security/security_access_data.xml',
+        'views/school_views.xml',
+        'data/school.profile.csv',
+        'data/school_data.xml',
+    ],
+    'demo': ['demo/school_demo_data.xml'],
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

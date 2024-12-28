@@ -1,0 +1,120 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* qweb_header_footer_pdf_examples
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0beta-20221012\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-24 13:01+0000\n"
+"PO-Revision-Date: 2024-01-24 13:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: qweb_header_footer_pdf_examples
+#: model:ir.actions.report,print_report_name:qweb_header_footer_pdf_examples.student_header_footer_report_ids
+msgid "'Student Report'"
+msgstr "'تقرير الطالب'"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.header_footer_temp
+msgid ""
+"<span style=\"font-size:30px;\">Report custom Header</span>\n"
+"                        <br/>"
+msgstr "<span style=\"font-size:30px;\">تحديد رأس التقرير</span><br/>"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid ""
+"<span>Report custom Header</span>\n"
+"                        <br/>"
+msgstr "<span>تحديد راس التقرير</span><br/>"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid ""
+"<span>Roll Number</span>\n"
+"                        <br/>"
+msgstr "<span>الرقم المرجعي</span><br/>"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "Beauty"
+msgstr "الجمال"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "Go to Email"
+msgstr "أذهب ال البريد الالكتروني"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "Hello from inside"
+msgstr "مرحبا"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "Is this even ? :"
+msgstr "هل هو فردي"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "Is this even or odd :"
+msgstr "هل الرقم فردي ام زوجي"
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "Is this odd ? :"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "Is this the first name :"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.header_footer_temp
+msgid "Logo"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "My name is"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.header_footer_temp
+msgid ""
+"Page:\n"
+"                    <span class=\"page\"/>/<span class=\"topage\"/>"
+msgstr "الصفحة:\n"
+"                    <span class=\"page\"/>/<span class=\"topage\"/>"
+
+#. module: qweb_header_footer_pdf_examples
+#: model:ir.actions.report,name:qweb_header_footer_pdf_examples.student_header_footer_report_ids
+msgid "Student Header Report"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "THanks God"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "The Right Color is"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "The choosen Color is"
+msgstr ""
+
+#. module: qweb_header_footer_pdf_examples
+#: model_terms:ir.ui.view,arch_db:qweb_header_footer_pdf_examples.report_school_student_report_template_main
+msgid "img"
+msgstr ""

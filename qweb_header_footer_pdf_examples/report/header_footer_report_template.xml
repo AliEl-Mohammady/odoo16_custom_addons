@@ -1,0 +1,205 @@
+<odoo>
+
+    <template id="header_footer_temp">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <div class="header">
+            <!--            <div class="text-center" style="border-bottom :1px solid black;font-size: 30px;">-->
+            <!--                <h1>Custom Header</h1>-->
+            <!--            </div>-->
+            <div class="text-center" style="border-bottom :1px solid black">
+                <div class="row">
+                    <div class="col-2 mb4">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-start"
+                             alt="Logo" style="max-height:90px"/>
+                    </div>
+                    <div class="col-6" style="padding-top:25px;padding-left:20px;">
+                        <span style="font-size:30px;">Report Custom Header</span>
+                        <br/>
+                        <p t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y %H:%M')"/>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span t-if="company.company_details" t-field="company.company_details"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <t t-out="0"/>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top :1px solid black;">
+                <!--                <h1>Custom Footer</h1>-->
+                <!--                <span t-field="company.report_footer"/>-->
+                <div class="row">
+                    <div class="col-4 mb4 text-left">
+                        <span t-if="company.email" t-field="company.email"/>
+                    </div>
+                    <div class="col-4">
+                        <span t-if="company.phone" t-field="company.phone"/>
+                    </div>
+                    <div class="col-4 text-right">
+                        <span t-if="company.website" t-field="company.website"/>
+                    </div>
+                </div>
+                <br/>
+                <div t-if="report_type == 'pdf'" class="text-muted" style="font-size :20px;">
+                    Page:
+                    <span class="page"/>/<span class="topage"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="get_lang_temp">
+        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name"
+             t-att-data-oe-id="o and o.id" t-att-data-oe-lang="'en_US'">
+            <t t-raw="0"/>
+        </div>
+    </template>
+    <template id="school_student_report">
+        <t t-call="web.html_container">
+            <t t-call="qweb_header_footer_pdf_examples.header_footer_temp">
+                <!--            <t t-call="web.external_layout">-->
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="qweb_header_footer_pdf_examples.report_school_student_report_template_main"/>
+                </t>
+                <!--            </t>-->
+            </t>
+        </t>
+    </template>
+
+    <template id="report_school_student_report_template_main">
+        <t t-call="qweb_header_footer_pdf_examples.get_lang_temp"/>
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row text-center">
+                     <p style="align-text:center;"><img alt="img" t-if="doc.student_image" t-att-src="image_data_uri(doc.student_image)" style="max-height:150px;max-width:100px;"/></p>
+                </div>
+                <div class="text-center" style="align-text:center;border-bottom:1px solid black;font-size:25px">
+                    <t style="align-text:center;" t-esc="doc.name"/>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <span>Roll Number</span>
+                        <br/>
+                        <t t-esc="doc.roll_number"/>
+                    </div>
+                    <div class="col-4 text-center">
+                        <span>Report custom Header</span>
+                        <br/>
+                        <t t-esc="doc.roll_number"/>
+                    </div>
+                    <div class="col-4 text-center">
+                        <span>Report custom Header</span>
+                        <br/>
+                        <t t-esc="doc.roll_number"/>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1>Hello from inside</h1>
+            </div>
+            <div>
+                <p t-esc="doc.name"/>
+                <p t-out="doc.name"/>
+                <h3 t-field="doc.name"/>
+                <span t-esc="doc.name"/>
+                <strong t-esc="doc.name"/>
+                <p t-if="doc.name == 'student one2many'">My name is
+                    <t t-esc="doc.name"/>
+                </p>
+                <p t-elif="doc.name == 'CSV Gemy'">Beauty
+                    <t t-esc="doc.name"/>
+                </p>
+                <p t-else="">
+                    <t t-esc="doc.name"/>
+                </p>
+                <br/>
+                <t t-foreach="doc.hobby_ids" t-as="rec">
+                    <h1>
+                        <p>
+                            <span t-esc="rec_index+1"/>
+                            -
+                            <span t-esc="rec.name"/>
+                        </p>
+                    </h1>
+                    <p>Is this the first name :
+                        <t t-esc="rec_first"/>
+                    </p>
+                    <p>Is this even or odd :
+                        <t t-esc="rec_parity"/>
+                    </p>
+                    <p>Is this even ? :
+                        <t t-esc="rec_even"/>
+                    </p>
+                    <p>Is this odd ? :
+                        <t t-esc="rec_odd"/>
+                    </p>
+                </t>
+                <t t-set="abc" t-value="Ali"/>
+                <t t-esc="abc"/>
+                <span t-attf-style="text-align: center;color: black;background-color: #23CADB;
+                        position: relative;display: block;font-size: 35px;">THanks God
+                </span>
+                <a t-att-href="doc.school_st_id.email">Go to Email</a>
+                <p t-att="{'style':'background-color: #23DB7C;font-size: 30px;text-align: center;color: black','href':'doc.school_st_id.email'}">
+                    <a t-att-href="doc.school_st_id.email">Go to Email</a>
+                </p>
+
+                <span t-attf-style="background-color: #{doc.roll_number}">
+                    The choosen Color is
+                    <t t-esc="doc.roll_number"/>
+                </span>
+                <p t-attf-style="background-color: {{doc.roll_number if doc.roll_number else ''}};">
+                    The Right Color is
+                    <h1 t-esc="doc.roll_number"/>
+                </p>
+                <div t-if="doc.name" t-field="doc.name"
+                     t-options="{'widget': 'barcode', 'width': 200, 'height': 75, 'img_style': 'max-height:50pt;max-width:100%;', 'img_align': 'center'}"/>
+            </div>
+            <img width="100" height="100" border="1"
+                 allt="Image not loading"
+                 src="/qweb_pdf_report_examples/static/description/icon.png"/>
+            <img width="100" height="100" border="1"
+                 allt="Image not loading"
+                 src="https://scontent.fcai2-2.fna.fbcdn.net/v/t39.30808-6/368160921_1119379329021934_724432420486443560_n.jpg"/>
+            <!--            <div style="text-align:left padding-top 10px;">-->
+            <!--                <img t-if="o.image" width="120" border="1"-->
+            <!--                     class="round-circle"-->
+            <!--                     t-att-src="image_data_uri(o.image)"/>-->
+            <!--                <img t-if="not o.image" width="120" border="1"-->
+            <!--                     class="round-circle"-->
+            <!--                     t-att-src="'/web/static/img/placeholder.png'"/>-->
+            <!--            </div>-->
+    </template>
+
+    <record id="student_header_footer_report_ids" model="ir.actions.report">
+        <field name="name">Student Header Report</field>
+        <field name="model">school.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">qweb_header_footer_pdf_examples.school_student_report</field>
+        <field name="report_file">qweb_header_footer_pdf_examples.school_student_report</field>
+        <field name="print_report_name">'Student Report'</field>
+        <field name="binding_model_id" ref="school_student.model_school_student"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="student_report_inherit" inherit_id="qweb_pdf_report_examples.report_school_student_report_template_main">
+        <xpath expr="//div" position="replace">
+            <h2y>
+                Hi
+            </h2y>
+        </xpath>
+<!--        <xpath expr="//div[@hasclass('inherit_template')]" position="after">-->
+<!--            <h2>-->
+<!--                Successifully inherit-->
+<!--            </h2>-->
+<!--        </xpath>-->
+    </template>
+
+</odoo>

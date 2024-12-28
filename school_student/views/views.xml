@@ -1,0 +1,500 @@
+<odoo>
+    <record id="view_school_student_search" model="ir.ui.view">
+        <field name="name">school.student.search</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <search string="School Student Details">
+                <field name="name"
+                       filter_domain="['|',('name','ilike',self),('roll_number','ilike',self)]"/>
+                <field name="school_st_id" string="school name"/>
+                <filter string="Last 7 days (Weak)" name="filter_last_weak_creation"
+                        domain="[('create_date','&gt;', (context_today() - datetime.timedelta(days=6)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Last 30 days (Month)" name="filter_last_month_creation"
+                        domain="[('create_date','&gt;', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+
+                <filter name="archived" string="Archived" domain="[('active','=',False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="School Name" name="group_by_School_id" context="{'group_by':'school_st_id'}"/>
+                </group>
+                <group expand="0" string="Group By">
+                    <filter string="User Name" name="group_by_user_id" context="{'group_by':'user_id'}"/>
+                </group>
+                <searchpanel>
+                    <field name="school_st_id" icon="fa fa-filter" select="multi" enable_counters="1"/>
+                    <!--                    <field name="tag_ids" icon="fa-building" select="multi" enable_counters="1"/>-->
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_school_student_kanban" model="ir.ui.view">
+        <field name="name">school.student.kanban</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" default_group_by="state" quick_create="false">
+                <!--            archivable="false" quick_create="false"-->
+                <!--            group_create="0"-->
+                <!--            records_draggable="0" : to permit or prevent move-->
+                <!--            sample="1"-->
+                <!--            class="o_crm_team_member_kanban">-->
+                <field name="name"/>
+                <field name="active"/>
+                <field name="student_fees"/>
+                <field name="school_st_id"/>
+                <field name="user_id"/>
+                <field name="currency_id"/>
+                <field name="student_image"/>
+                <field name="id"/>
+<!--                <field name="state" readonly="1"/>-->
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_content oe_kanban_global_click o_kanban_record_has_image_fill">
+<!--                            oe_kanban_global_click : to make kanban clickable-->
+                            <div class="o_kanban_image d-none d-md-block"
+                                 t-attf-style="background-image:url('#{kanban_image('school.student', 'student_image', record.id.raw_value,placeholder)}')">
+                            </div>
+<!--                            <div><img class="o_kanban_image_inner_pic"-->
+<!--                                        t-att-src="kanban_image('school.student', 'student_image',record.id.raw_value)"/></div>-->
+                            <!--                            <div class="o_kanban_card">-->
+                            <div class="o_kanban_details d-flex flex-column">
+                                <strong class="o_kanban_record_title">
+                                    <span>
+                                        <field name="name"/>
+                                    </span>
+                                    <!--                                    <span t-esc="record.name.raw_value"/>-->
+                                </strong>
+                                <span class="o_kanban_record_subtitle">
+                                    <ul>
+                                        <li>School Name :
+                                            <field name="school_st_id"/>
+                                        </li>
+                                        <li>School Fees :
+                                            <field name="student_fees"/>
+                                        </li>
+                                        <li>State :
+                                            <field name="active"/>
+                                        </li>
+                                    </ul>
+                                </span>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <field name="currency_id"/>
+                                    <div class="o_kanban_inline_block">
+                                        <field name="currency_id"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="user_id" widget="many2one_avatar_user"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_school_student_calender_c" model="ir.ui.view">
+        <field name="name">school.student.calender</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <calendar date_start="create_date" string="Student" mode="month"
+                      color="name" event_limit="2" quick_add="False" event_open_popup="1">
+                <field name="name" filters="1" avatar_field="student_image"/>
+            </calendar>
+        </field>
+    </record>
+    <!--                        form_view_id="%(school.student.view_school_student_form)d"-->
+    <record id="view_school_student_graph" model="ir.ui.view">
+        <field name="name">school.student.graph</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <graph string="Student Analysis" stacked="False" disable_linking="1">
+<!--                                                             disable_linking="1" : to prevent open records when click-->
+                <field name="school_st_id"/>
+                <field name="birth_date" interval="month" type="pie"/>
+                <!--                           interval="month,day,quarter,year"type="pie,line,bar"-->
+                <field name="total_fees" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_school_student_pivot" model="ir.ui.view">
+        <field name="name">school.student.pivot</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="total_fees" type="measure"/>
+                <field name="school_st_id" type="col"/>
+                <field name="birth_date" interval="month" type="raw"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_school_student_cohort" model="ir.ui.view">
+        <field name="name">school.student.cohort</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <cohort mode="retention" string="student Analysis" date_start="create_date" date_stop="write_date" interval="day"
+                     measure="total_fees"/>
+<!--            mode="churn"-->
+        </field>
+    </record>
+
+    <record id="view_school_student_gantt" model="ir.ui.view">
+        <field name="name">school.student.gantt</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <gantt class="o_mrp_workorder_gantt" date_stop="create_date" date_start="write_date" string="Students Fees" default_group_by="state" create="0" delete="0"
+                plan="0"
+                decoration-success="state == 'done'"
+                decoration-warning="state == 'paid'"
+                default_scale="week"
+                scales="week,month"
+                color="id"
+                display_unavailability="1">
+                <field name="create_date"/>
+                <field name="state"/>
+                <field name="write_date"/>
+                <field name="name"/>
+                <templates>
+                    <div t-name="gantt-popover" class="container-fluid">
+                        <div class="row g-0">
+                            <div class="col">
+                                <ul class="ps-1 mb-0 list-unstyled">
+                                    <li><strong>Start Date: </strong> <t t-field="create_date"/></li>
+                                    <li><strong>Stop Date: </strong> <t t-field="write_date"/></li>
+                                    <li><strong>Name: </strong> <t t-field="name"/></li>
+                                    <li><strong>State: </strong> <t t-field="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </templates>
+            </gantt>
+        </field>
+    </record>
+<!--                form_view_id="%(mrp_production_workorder_form_view_inherit)d">-->
+
+    <record id="view_school_student_form1" model="ir.ui.view">
+        <field name="name">school.view.form1</field>
+        <field name="model">school.student</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <notebook>
+                        <page string="Student Profile">
+                            <group>
+                                <group>
+                                    <field name="address"/>
+                                    <field name="student_image"/>
+                                    <field name="hobby_ids" widget="many2many_checkboxes"/>
+                                    <field name="hobbies_ids"/>
+                                    <field name="country_id" context="{'students':parent.school_list}"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_student_form" model="ir.ui.view">
+        <field name="name">school.view.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="exists_method" string="Exists Method" type="object"
+                                class="oe_highlight"/>
+                        <button name="get_meta_data_method" string="Meta Data Method" type="object"
+                                class="oe_highlight"/>
+                        <button name="fields_get_method" string="Fields Get Method" type="object"
+                                class="oe_highlight"/>
+                        <button name="read_group_method" string="Read Group Method" type="object"
+                                class="oe_highlight"/>
+                        <button name="env_orm_button" string="Env Method" type="object"
+                                class="oe_highlight"/>
+                        <button name="print_button" string="Print Report Button" type="object"
+                                class="oe_highlight"/>
+                        <button name="action_send_email" string="Send Email" type="object" class="oe_highlight"/>
+                        <button name="wizard_button" string="Wizard Button Using object" type="object"
+                                class="oe_highlight"/>
+                        <button name="%(student_fees_update_wizard_action)d" string="Wizard Button from action type"
+                                type="action" class="oe_highlight"/>
+                        <button name="custom_button_method" string="Custom Button" type="object" class="oe_highlight"/>
+                        <button name="special_command6_replace_many2many_field_with_new_existing_records" options="{'reload_on_button': True}"
+                                string="Special Command6 0 0" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="done,draft,paid,progress" options="{'clickable':1}"/>
+                    </header>
+                    <br/>
+                    <notebook>
+                        <page string="Student Profile">
+                            <group>
+                                <group string="Student Info">
+                                    <field name="name" required="1" groups="school.student_mid_group"/>
+                                    <field name="id" groups="base.group_no_one"/>
+                                    <field name="roll_number" groups="school.student_mid_group"/>
+                                    <field name="address_id"
+                                           context="{'show_address': 1}"
+                                           options='{"always_reload": True}'/>
+                                    <!--                            <field name="school_st_id" widget="selection"/>-->
+                                    <field name="school_st_id"
+                                           domain="['|',('is_virtual_class','=',True),('school_type','!=',False)]"
+                                           options="{'no_create_edit':True,'no_open':True,'no_create':True}"/>
+                                    <!--                                           groups="school.student_mid_group"-->
+                                    <!--                                           context="{'active_test':True}"-->
+                                    <field name="address"/>
+                                    <field name="student_image"/>
+                                    <field name="hobby_ids" widget="many2many_checkboxes" context="{'active_test': False}"/>
+                                    <field name="hobbies_ids"/>
+                                </group>
+                                <group string="Student Fees">
+                                    <field name="currency_id"/>
+                                    <field name="student_fees"/>
+                                    <field name="total_fees" widget="monetary"/>
+                                    <field name="active"/>
+                                    <field name="birth_date" attrs="{'required':[('total_fees','=',1759925)]}"/>
+                                    <field name="ref_id"/>
+                                    <button name="share_facebook" string="Facebook" type="object" class="oe_highlight"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="School Info">
+                            <group>
+                                <field name="school_st_id"/>
+                                <field name="name"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <button name="login_button" string="Login Button" type="object" class="oe_highlight"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_hobby_form" model="ir.ui.view">
+        <field name="name">school.hobby.view.form</field>
+        <field name="model">hobby</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="school_student_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_student_tree" model="ir.ui.view">
+        <field name="name">school.view.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+<!--            <tree editable="top" create="0" delete="0" duplicate="0" export_xlsx="0" import="0" multi_edit="0"
+edit="0">-->
+            <tree decoration-info="id&gt;500 or id&lt;200 " default_order="id desc">
+                <header>
+                    <button name="header_open_wiz" string="Wizard Button" type="object"/>
+                </header>
+                <field name="id" optional="show"/>
+                <field name="create_date" decoration-danger="1" optional="hide"/>
+                <field name="roll_number" decoration-it="1"/>
+                <field name="name" decoration-bf="1"/>
+                <field name="total_fees" sum="Sum of Total Fees" />
+<!--                <field name="total_fees" avg="1" />-->
+                <field name="school_st_id" widget="badge"/>
+                <field name="hobby_ids" widget="many2many_tags"/>
+                <field name="student_seq" widget="handle" optional="hide"/>
+                <button name="check_button" string=" " type="object" class="fa fa-check btn-success"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_school_student_tree1" model="ir.ui.view">
+        <field name="name">school.view.tree1</field>
+        <field name="model">school.student</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <!--            <tree editable="top">-->
+            <tree decoration-info="id&gt;5" editable="top">
+                <field name="id" optional="show"/>
+                <field name="create_date" decoration-danger="1" optional="hide"/>
+                <field name="roll_number" decoration-it="1"/>
+                <field name="name" decoration-bf="1"/>
+                <field name="country_id" context="{'students':parent.school_list}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_school_hobby_tree" model="ir.ui.view">
+        <field name="name">school.hobby.view.tree</field>
+        <field name="model">hobby</field>
+        <field name="arch" type="xml">
+            <tree default_order="name">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="inherit_school_form" model="ir.ui.view">
+        <field name="name">inherit.school.form</field>
+        <field name="model">school.profile</field>
+        <field name="inherit_id" ref="school.view_school_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='special_command0_create_record']" position="before">
+                <button name="smart_button" type="object" icon="fa-solid fa-address-book">
+                    <span>Students :</span>
+                    <field class="o_stat_text" name="school_count"/>
+                </button>
+            </xpath>
+            <field name="description" position="after">
+                <field name="school_count"/>
+                <field name="school_list">
+                    <tree decoration-info="id&gt;5" editable="top">
+                        <field name="id" optional="show"/>
+                        <field name="create_date" decoration-danger="1" optional="hide"/>
+                        <field name="roll_number" decoration-it="1"/>
+                        <field name="name" decoration-bf="1"/>
+                        <field name="country_id" context="{'students':parent.school_list}"/>
+                    </tree>
+                </field>
+<!--                <field name="school_list"-->
+<!--                       context="{'form_view_ref':'school_student.view_school_student_form1','tree_view_ref':'school_student.view_school_student_tree1',}"/>-->
+            </field>
+
+        </field>
+    </record>
+
+    <record id="action_school_student_view" model="ir.actions.act_window">
+        <field name="name">school</field>
+        <field name="res_model">school.student</field>
+        <field name="type">ir.actions.act_window</field>
+        <!--        <field name="context">{ 'default_name': 'Ali','search_default_archived': 1,'search_default_group_by_School_id': 1, }</field>-->
+<!--        <field name="context">{'active_test':False}</field>-->
+        <field name="context">{'active_test':True}</field>
+        <field name="view_mode">kanban,tree,form,calendar,graph,pivot,cohort,gantt</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_school_hobby_view" model="ir.actions.act_window">
+        <field name="name">hobby</field>
+        <field name="res_model">hobby</field>
+        <field name="type">ir.actions.act_window</field>
+        <!--        <field name="groups_id" eval="[(4,ref('school.student_low_group'))]"/>-->
+        <field name="view_mode">tree,form</field>
+        <field name="context">{ 'default_name': 'Ali' }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="school_student_root_menu"
+            name="School Student"
+            sequence="1"
+            web_icon="school_student,static/description/icon.png"/>
+
+    <menuitem
+            id="school_student_main_menu"
+            name="Menu 1"
+            parent="school_student_root_menu"
+            sequence="1"/>
+
+    <menuitem
+            id="school_student_main_menu2"
+            name="Menu 2"
+            parent="school_student_root_menu"
+            sequence="1"/>
+<!--            groups="school.school_group_access,school.school_group_access2,school.school_group_access3,"-->
+
+    <menuitem
+            id="all_school_menu"
+            name="List"
+            parent="school_student_main_menu"
+            sequence="1"
+            action="action_school_student_view"/>
+
+    <menuitem
+            id="school_hobby_menu"
+            name="Hobby"
+            parent="school_student_main_menu2"
+            sequence="1"
+            action="action_school_hobby_view"/>
+
+    <record id="view_car_engines_form" model="ir.ui.view">
+        <field name="name">car.engines.view.form</field>
+        <field name="model">car.engines</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="car_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_car_engines_tree" model="ir.ui.view">
+        <field name="name">car.engines.tree</field>
+        <field name="model">car.engines</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="car_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_car_engines_view" model="ir.actions.act_window">
+        <field name="name">car.engines.action</field>
+        <field name="res_model">car.engines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="car_engines_menu"
+            name="Car Engines"
+            parent="school_student_main_menu2"
+            sequence="2"
+            action="action_car_engines_view"/>
+    <!--            groups="group_id,group_id2" it is about access rights-->
+
+
+    <record id='action_go_to_youtube' model='ir.actions.act_url'>
+        <field name='name'>Go To Youtube</field>
+        <field name='url'>https://youtube.com</field>
+        <field name='target'>new</field>
+    </record>
+    <menuitem id="menu_go_to_youtube" parent="school_student_main_menu2" name="Go To Youtube" sequence="20"
+              action="action_go_to_youtube"/>
+
+
+</odoo>

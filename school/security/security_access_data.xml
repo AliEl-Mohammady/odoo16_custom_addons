@@ -1,0 +1,88 @@
+<odoo>
+
+    <record id="access_school" model="ir.model.access">
+        <field name="name">access.school.security</field>
+        <field name="model_id" ref="model_school_student_profile_security_example"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="category_group" model="ir.module.category">
+        <field name="name">School Groups</field>
+    </record>
+
+    <record id="school_group_access" model="res.groups">
+        <field name="name">First Group</field>
+        <field name="category_id" ref="school.category_group"/>
+    </record>
+
+    <record id="school_group_access2" model="res.groups">
+        <field name="name">Second Group</field>
+        <field name="category_id" ref="school.category_group"/>
+    </record>
+
+    <record id="school_group_access3" model="res.groups">
+        <field name="name">Thierd School Group</field>
+        <field name="implied_ids"
+               eval="[(6,0,[ref('mail.group_mail_template_editor'),ref('analytic.group_analytic_accounting')])]"/>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="school_group_access4" model="res.groups">
+        <field name="name">fourth School Group</field>
+        <!--        <field name="sequence">3</field>-->
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+
+    <record id="school_group_access3" model="res.groups">
+        <field name="name">Thired School Group</field>
+        <field name="implied_ids"
+               eval="[(6,0,[ref('mail.group_mail_template_editor'),ref('analytic.group_analytic_accounting')])]"/>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+
+    <record id="category_student_group" model="ir.module.category">
+        <field name="name">Student Groups</field>
+    </record>
+
+    <record id="category_sub_student_group" model="ir.module.category">
+        <field name="name">Student Sub Groups</field>
+        <field name="parent_id" ref="school.category_student_group"/>
+    </record>
+
+    <record id="student_low_group" model="res.groups">
+        <field name="name">Student Low Group</field>
+        <field name="category_id" ref="school.category_sub_student_group"/>
+    </record>
+
+    <record id="student_mid_group" model="res.groups">
+        <field name="name">Student Mid Group</field>
+        <field name="implied_ids"
+               eval="[(6,0,[ref('school.student_low_group')])]"/>
+        <field name="category_id" ref="school.category_sub_student_group"/>
+    </record>
+
+    <record id="student_admin_group" model="res.groups">
+        <field name="name">Student Admin Group</field>
+        <field name="implied_ids"
+               eval="[(6,0,[ref('school.student_low_group'),ref('school.student_mid_group')])]"/>
+<!--        when we choose this group will choose others-->
+        <field name="category_id" ref="school.category_sub_student_group"/>
+    </record>
+
+        <record id="school_access_right_user" model="ir.rule">
+            <field name="name">School User Access</field>
+            <field name="model_id" ref="model_school_student_profile_security_example"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]
+    <!--            ['|',('message_partner_ids', 'child_of', [user.partner_id.commercial_partner_id.id]),-->
+    <!--            ('message_partner_ids', 'in', [user.partner_id.id])]-->
+            </field>
+            <field name="groups" eval="[(4,ref('school.school_group_access'))]"/>
+            <!--        <field name="groups" eval="[Command.link(ref('base.group_portal'))]"/>-->
+        </record>
+
+</odoo>
