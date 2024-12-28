@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Hr Salary Rules for Regular Pay-->
+
+        <!-- 1- Social Raise Allowance -->
+        <record id="hr_salary_rule_social_raise_allowance" model="hr.salary.rule">
+            <field name="code">SOCIAL_RAISE</field>
+            <field name="name">Social Raise Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_social_raise_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">Attendance = worked_days.WORK100 and worked_days.WORK100.number_of_days
+result = employee.social_raise_amount - ((employee.social_raise_amount /30) * (30-Attendance))</field>
+            <field name="sequence" eval="11"/>
+            <field name="note">Social Raise Allowance</field>
+        </record>
+
+        <!-- 2- Shift Allowance -->
+        <record id="hr_salary_rule_shift_allowance" model="hr.salary.rule">
+            <field name="code">SHIFT</field>
+            <field name="name">Shift Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_shift_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">total_unpaid = worked_days.ABSENCE and worked_days.ABSENCE.number_of_days
+if total_unpaid == 1:
+    absence = employee.shift_allowance_amount * 0.5
+elif total_unpaid == 0:
+    absence = 0
+else:
+    absence = employee.shift_allowance_amount
+
+total_sick = worked_days.LEAVE110 and worked_days.LEAVE110.number_of_days
+total= worked_days.WORK100 and worked_days.WORK100.number_of_days
+if total == 0:
+    sick = employee.shift_allowance_amount
+elif  total_sick >= 4:
+    sick = (employee.shift_allowance_amount /30) * (30-total)
+else:
+    sick =0
+
+total_holiday = worked_days.holidays and worked_days.holidays.number_of_days
+if total_holiday:
+    holiday =  (total_holiday) *  (employee.shift_allowance_amount * 0.25) 
+else:
+    holiday =0
+
+if absence + sick + holiday >= employee.shift_allowance_amount:
+    result = 0
+else: 
+    result = employee.shift_allowance_amount - (absence + sick + holiday)</field>
+            <field name="sequence" eval="12"/>
+            <field name="note">Shift Allowance</field>
+        </record>
+
+        <!-- 3- Meal Allowance -->
+        <record id="hr_salary_rule_meal_allowance" model="hr.salary.rule">
+            <field name="code">MEAL</field>
+            <field name="name">Meal Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_meal_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.meal_allowance_amount</field>
+            <field name="sequence" eval="13"/>
+            <field name="note">Meal Allowance</field>
+        </record>
+
+        <!-- 4- Supervisor Allowance -->
+        <record id="hr_salary_rule_supervisor_allowance" model="hr.salary.rule">
+            <field name="code">SUPERVISOR</field>
+            <field name="name">Supervisor Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_supervisor_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.supervisor_allowance_amount</field>
+            <field name="sequence" eval="14"/>
+            <field name="note">Supervisor Allowance</field>
+        </record>
+
+        <!-- 5- Spinning Allowance -->
+        <record id="hr_salary_rule_spinning_allowance" model="hr.salary.rule">
+            <field name="code">SPINNING</field>
+            <field name="name">Social Spinning Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_spinning_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.spinning_allowance_amount</field>
+            <field name="sequence" eval="15"/>
+            <field name="note">Spinning Allowance</field>
+        </record>
+
+        <!-- 6- Housing Allowance -->
+        <record id="hr_salary_rule_housing_allowance" model="hr.salary.rule">
+            <field name="code">HOUSING</field>
+            <field name="name">Housing Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_housing_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.housing_allowance_amount</field>
+            <field name="sequence" eval="16"/>
+            <field name="note">Housing Allowance</field>
+        </record>
+
+        <!-- 7- Driving Allowance -->
+        <record id="hr_salary_rule_driving_allowance" model="hr.salary.rule">
+            <field name="code">DRIVING</field>
+            <field name="name">Driving Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_drive_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.total_drive_allowance</field>
+            <field name="sequence" eval="17"/>
+            <field name="note">Driving Allowance</field>
+        </record>
+
+        <!-- 8- Supervisor Evaluation Allowance -->
+        <record id="hr_salary_rule_monthly_supervisor_eval_allowance" model="hr.salary.rule">
+            <field name="code">M_SUPER_EVAL</field>
+            <field name="name">Monthly Supervisor Evaluation Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_monthly_supervisor_eval_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.total_supervisor_allowance_after_eval</field>
+            <field name="sequence" eval="18"/>
+            <field name="note">Monthly Supervisor Evaluation Allowance</field>
+        </record>
+
+        <!-- 9- Supervisor Assistant Evaluation Allowance -->
+        <record id="hr_salary_rule_supervisor_assistant_eval_allowance" model="hr.salary.rule">
+            <field name="code">SUPER_ASSISTANT_EVAL</field>
+            <field name="name">Supervisor Assistant Evaluation Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_monthly_supervisor_assistant_eval_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.total_supervisor_assistant_allowance_after_eval</field>
+            <field name="sequence" eval="19"/>
+            <field name="note">Supervisor Assistant Evaluation Allowance</field>
+        </record>
+
+        <!-- 10- Job Nature Allowance -->
+        <record id="hr_salary_rule_cleaners_allowance" model="hr.salary.rule">
+            <field name="code">JOB_NATURE</field>
+            <field name="name">Job Nature Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_cleaners_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.cleaners_allowance_amount</field>
+            <field name="sequence" eval="20"/>
+            <field name="note">Job Nature Allowance</field>
+        </record>
+
+        <!-- 11- Incentive Allowance -->
+        <record id="hr_salary_rule_incentive_allowance" model="hr.salary.rule">
+            <field name="code">INCENTIVE</field>
+            <field name="name">Incentive Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_incentive_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.total_incentive_allowance_amount</field>
+            <field name="sequence" eval="21"/>
+            <field name="note">Incentive Allowance</field>
+        </record>
+
+        <!-- 12- Spinning Host Allowance -->
+        <record id="hr_salary_rule_spinning_host_alliwance" model="hr.salary.rule">
+            <field name="code">SPINNING_HOST</field>
+            <field name="name">Spinning Host Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="hr_payroll.structure_002"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result =employee.get_spinning_host_allowance == True</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=employee.spinning_host_allowance_amount</field>
+            <field name="sequence" eval="22"/>
+            <field name="note">Spinning Host Allowance</field>
+        </record>
+    </data>
+</odoo>

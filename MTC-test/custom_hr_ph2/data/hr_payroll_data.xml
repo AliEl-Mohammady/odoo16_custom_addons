@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+		<!-- Hr Salary Rules for Regular Pay-->
+		<record id="hr_salary_rule_social_raise_allowance" model="hr.salary.rule">
+			<field name="code">SOC</field>
+			<field name="name">Social Raise Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_social_raise_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.social_raise_amount</field>
+			<field name="sequence" eval="11"/>
+			<field name="note">Social Raise Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_shift_allowance" model="hr.salary.rule">
+			<field name="code">SHIFT</field>
+			<field name="name">Shift Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_shift_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.shift_allowance_amount</field>
+			<field name="sequence" eval="12"/>
+			<field name="note">Shift Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_meal_allowance" model="hr.salary.rule">
+			<field name="code">MEAL</field>
+			<field name="name">Meal Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_meal_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.meal_allowance_amount</field>
+			<field name="sequence" eval="13"/>
+			<field name="note">Meal Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_supervisor_allowance" model="hr.salary.rule">
+			<field name="code">SUPERVISOR</field>
+			<field name="name">Supervisor Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_supervisor_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.supervisor_allowance_amount</field>
+			<field name="sequence" eval="14"/>
+			<field name="note">Supervisor Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_spinning_allowance" model="hr.salary.rule">
+			<field name="code">SPINNING</field>
+			<field name="name">Social Spinning Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_spinning_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.spinning_allowance_amount</field>
+			<field name="sequence" eval="15"/>
+			<field name="note">Spinning Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_housing_allowance" model="hr.salary.rule">
+			<field name="code">HOUSING</field>
+			<field name="name">Housing Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_housing_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.housing_allowance_amount</field>
+			<field name="sequence" eval="16"/>
+			<field name="note">Housing Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_monthly_supervisor_eval_allowance" model="hr.salary.rule">
+			<field name="code">M_SUPER_EVAL</field>
+			<field name="name">Monthly Supervisor Evaluation Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_monthly_supervisor_eval_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=(employee.total_rate / 100) * employee.total_supervisor_allowance_before_eval</field>
+			<field name="sequence" eval="17"/>
+			<field name="note">Monthly Supervisor Evaluation Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_cleaners_allowance" model="hr.salary.rule">
+			<field name="code">JOB_NATURE</field>
+			<field name="name">Job Nature Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_cleaners_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.cleaners_allowance_amount</field>
+			<field name="sequence" eval="18"/>
+			<field name="note">Job Nature Allowance</field>
+		</record>
+
+		<record id="hr_salary_rule_incentive_allowance" model="hr.salary.rule">
+			<field name="code">INCENTIVE</field>
+			<field name="name">Incentive Allowance</field>
+			<field name="category_id" ref="hr_payroll.ALW"/>
+			<field name="struct_id"
+                   ref="hr_payroll.structure_002"/>
+			<field name="condition_select">python</field>
+			<field name="condition_python">result =employee.get_incentive_allowance == True</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result=employee.total_incentive_allowance_amount</field>
+			<field name="sequence" eval="19"/>
+			<field name="note">Incentive Allowance</field>
+		</record>
+		
+		
+	</data>
+</odoo>

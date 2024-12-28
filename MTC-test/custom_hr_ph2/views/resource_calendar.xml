@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="resource_calendar_attendance_tree_inherit" model="ir.ui.view">
+            <field name="name">resource.calendar.attendance.tree.inherit</field>
+            <field name="model">resource.calendar.attendance</field>
+            <field name="inherit_id" ref="resource.view_resource_calendar_attendance_tree"/>
+            <field name="arch" type="xml">
+                <field name="week_type" position="before">
+                    <field name="shift_hours" widget="float_time"/>
+                    <field name="is_cross_shift"/>
+                    <field name="overtime_after" widget="float_time" attrs="{'invisible': [('is_cross_shift','!=', True)]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

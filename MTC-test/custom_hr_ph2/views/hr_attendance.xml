@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="view_hr_attendance_tree" model="ir.ui.view">
+            <field name="name">hr.attendance.tree</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='worked_hours']" position="after">
+                    <field name="day" optional='show'/>
+                    <field name="planned_ch_in" widget="float_time" optional='show'/>
+                    <field name="planned_ch_out" widget="float_time" optional='show'/>
+                    <field name="date_from" invisible='1'/>
+                    <!-- <field name="date_to" optional='show'/> -->
+                    <field name="shift_hours" widget="float_time" optional='show'/>
+                    <field name="is_cross_shift" optional='show'/>
+                    <field name="overtimee_hours" widget="float_time" optional='hide' sum="Total Overtime Hours"/>
+                    <field name="overtime_type" optional='hide'/>
+                    <field name="overtime_amount" widget="monetary" optional='hide' sum="Total Overtime Amount"/>
+                    <field name="approval_status" optional='show'/>
+                    <field name="rejection_reason" optional='show' attrs="{'readonly': [('approval_status','!=', 'rejected')]}"/>
+                    <field name="is_weekend" optional='hide'/>
+                    <field name="is_holiday" optional='hide'/>
+                    <field name="holiday" optional='hide'/>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']" position="before">
+                    <field name="emp_id" invisible='1'/>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="department_id" optional='show'/>
+                    <field name="employee_shift"/>
+                    <field name="resource_calendar_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

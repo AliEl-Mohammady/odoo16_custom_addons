@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <record id="hr_employee_form_sequence" model="ir.ui.view">
+            <field name="name">hr.employee.form.sequence</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="emp_id" string="Employee Id" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_employee_list_sequence" model="ir.ui.view">
+            <field name="name">hr.employee.list.sequence</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="emp_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_employee_search_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.search.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="emp_id" string="Employee ID"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

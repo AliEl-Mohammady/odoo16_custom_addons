@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="view_hr_salary_attachment_form_inherited" model="ir.ui.view">
+            <field name="name">hr.salary.attachment.form.inherited</field>
+            <field name="model">hr.salary.attachment</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_attachment_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='deduction_type']" position="after">
+                    <field name="duration" attrs="{'required': [('deduction_type','!=', 'child_support')], 'invisible': [('deduction_type','=', 'child_support')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_salary_attachment_tree_inherited" model="ir.ui.view">
+            <field name="name">hr.salary.attachment.tree.inherited</field>
+            <field name="model">hr.salary.attachment</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_attachment_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_start']" position="after">
+                    <field name="duration" optional='show'/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

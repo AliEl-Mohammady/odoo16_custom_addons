@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="hr_contract_join_date_form" model="ir.ui.view">
+            <field name="name">hr.contract.join.date.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_start']" position="before">
+                    <field name="date_join"/>
+                </xpath>
+                <xpath expr="//field[@name='contract_type_id']" position="before">
+                    <field name="contract_type"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_contract_emp_id_list" model="ir.ui.view">
+            <field name="name">hr.contract.emp.id.list</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="emp_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_contract_search_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.search.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
+            <field name="arch" type="xml">
+                <search>
+                        <field name="emp_id" string="Employee ID"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="view_hr_employee_public_emp_id_list" model="ir.ui.view">
+            <field name="name">hr.employee.public.emp.id.list</field>
+            <field name="model">hr.employee.public</field>
+            <field name="inherit_id" ref="hr.hr_employee_public_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="emp_id"/>
+                </xpath>
+            </field>    
+        </record>
+
+        <record id="view_hr_employee_public_emp_id_search" model="ir.ui.view">
+            <field name="name">hr.employee.public.emp.id.search</field>
+            <field name="model">hr.employee.public</field>
+            <field name="inherit_id" ref="hr.hr_employee_public_view_search"/>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="emp_id" string="Employee ID"/>
+                </search>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

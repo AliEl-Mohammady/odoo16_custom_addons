@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add overtime fields to the hr.employee.view.form -->
+    <record id="hr_employee_overtime_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.overtime.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@name='hr_settings']" position="after">
+                <page string="Overtime" name="overtime" groups="hr_payroll.group_hr_payroll_manager">
+                    <group>
+                        <group name="right_group">
+                            <group string="Overtime Hours for Current Month">
+                                <field name="total_overtime_hours" widget="float_time" readonly="1"/>
+                                <field name="single_overtime_hours" widget="float_time" readonly="1"/>
+                                <field name="double_overtime_hours" widget="float_time" readonly="1"/>
+                            </group>
+                            <group string="Overtime Amount for Current Month">
+                                <field name="total_overtime_amount" widget="monetary" readonly="1"/>
+                                <field name="single_overtime_amount" widget="monetary" readonly="1"/>
+                                <field name="double_overtime_amount" widget="monetary" readonly="1"/>
+                            </group>
+                            <group string="Overtime Count for Current Month">
+                                <field name="overtime_type_counts" />
+                                <field name="single_overtime_count" readonly="1"/>
+                                <field name="double_overtime_count" readonly="1"/>
+                            </group>
+                        </group>
+                        <group name="left_group">
+                            <group string="Rules for Calculating Overtime Rates" groups="hr.group_hr_manager">
+                                <field name="single_overtime_rate"/>
+                                <field name="double_overtime_rate"/>
+                                <field name="num_hours" widget="float_time"/>
+                            </group>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_employee_time_off_alloction_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.time.off.allocation.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='number_of_years']" position="after">
+                <field name="years_or_age"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="check_employee_age_and_years" model='ir.cron'>
+        <field name="name">Employee: Check Employee Age and Number of Years</field>
+        <field name="model_id" ref="model_hr_employee"/>
+        <field name="state">code</field>
+        <field name="code">model.check_employee_age_and_years()</field>
+        <field name="interval_type">days</field>
+        <field name="interval_number">1</field>
+        <field name="numbercall">-1</field>
+    </record>
+
+</odoo>

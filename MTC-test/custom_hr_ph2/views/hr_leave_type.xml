@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="view_hr_leave_type_form_inherited" model="ir.ui.view">
+            <field name="name">hr.leave.type.form.inherited</field>
+            <field name="model">hr.leave.type</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='time_type']" position="before">
+                    <field name="minimum_months_required"/>
+                    <field name="max_days_per_month"/>
+                </xpath>
+                <xpath expr="//field[@name='requires_allocation']" position="after">
+                    <field name="holiday_days" attrs="{'invisible': [('requires_allocation','!=', 'yes')], 'required': [('requires_allocation','=','yes')]}" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

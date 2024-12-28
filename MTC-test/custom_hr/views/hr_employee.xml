@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+<!--    <record id="hr_employee_view_tree" model="ir.ui.view">-->
+<!--        <field name="name">hr.employee.view.tree</field>-->
+<!--        <field name="model">hr.employee</field>-->
+<!--        <field name="inherit_id" ref="hr.view_employee_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='name']" position="after">-->
+<!--                <field name="date_join"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="hr_employee_view_form" model="ir.ui.view">-->
+<!--        <field name="name">hr.employee.view.form</field>-->
+<!--        <field name="model">hr.employee</field>-->
+<!--        <field name="inherit_id" ref="hr.view_employee_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='job_id']" position="after">-->
+<!--                <field name="date_join"/>-->
+<!--                <field name="number_of_years"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='birthday']" position="after">-->
+<!--                <field name="age"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='visa_no']" position="before">-->
+<!--                <field name="insurance_num"/>-->
+<!--                <field name="union_card"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='children']" position="after">-->
+<!--                <field name="children_details"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='resource_calendar_id']" position="after">-->
+<!--                <field name="employee_shift"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='gender']" position="after">-->
+<!--                <field name="military_status" attrs="{'required': [('gender','=', 'male')], 'invisible': [('gender','!=', 'male')]}" />-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='job_id']" position="after">-->
+<!--                <field name="registration_date"/>-->
+<!--                <field name="registration_attachment"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!-- Add allowance fields to the hr.employee.view.form -->
+    <record id="hr_employee_allowance_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.allowance.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@name='hr_settings']" position="after">
+                <page string="Allowance" name="allowance" groups="hr_payroll.group_hr_payroll_manager">
+                    <group>
+                        <group name="right_group">
+                            <group string="Social Raise Allowance">
+                                <field name="get_social_raise_allowance"/>
+                                <field name="social_raise_amount" attrs="{'required': [('get_social_raise_allowance','=', True)], 'invisible': [('get_social_raise_allowance','!=', True)]}"/>
+                            </group>
+                            <group string="Shift Allowance">
+                                <field name="get_shift_allowance"/>
+                                <field name="worker_or_security" attrs="{'required': [('get_shift_allowance', '=', True)], 'invisible': [('get_shift_allowance', '!=', True)]}"/>
+                                <field name="shift_allowance_amount" attrs="{'required': [('get_shift_allowance', '=', True)], 'invisible': [('get_shift_allowance', '!=', True)]}"/>
+                            </group>
+                            <group string="Meal Allowance">
+                                <field name="get_meal_allowance"/>
+                                <field name="employee_grade" attrs="{'invisible': [('get_meal_allowance', '!=', True)]}"/>
+                                <field name="meal_allowance_amount" attrs="{'required': [('get_meal_allowance', '=', True)], 'invisible': [('get_meal_allowance', '!=', True)], 'readonly': [('employee_grade', '!=', False)]}"/>
+                            </group>
+                            <group string="Housing Allowance">
+                                <field name="get_housing_allowance"/>
+                                <field name="housing_allowance_amount" attrs="{'required': [('get_housing_allowance','=', True)], 'invisible': [('get_housing_allowance','!=', True)]}"/>
+                            </group>
+                            <group string="Cleaners Allowance">
+                                <field name="get_cleaners_allowance"/>
+                                <field name="cleaners_allowance_amount" attrs="{'required': [('get_cleaners_allowance','=', True)], 'invisible': [('get_cleaners_allowance','!=', True)]}"/>
+                            </group>
+                            <group string="Incentive Allowance">
+                                <field name="get_incentive_allowance"/>
+                                <field name="production_allowance_amount" attrs="{'required': [('get_incentive_allowance','=', True)], 'invisible': [('get_incentive_allowance','!=', True)]}"/>
+                                <field name="production_efficiency_rate" attrs="{'required': [('get_incentive_allowance','=', True)], 'invisible': [('get_incentive_allowance','!=', True)]}"/>
+                                <field name="production_efficiency_amount" attrs="{'required': [('get_incentive_allowance','=', True)], 'invisible': [('get_incentive_allowance','!=', True)]}"/>
+                                <field name="total_incentive_allowance_amount" attrs="{'invisible': [('get_incentive_allowance','!=', True)]}"/>
+                            </group>
+                        </group>
+                        <group name="left_group">
+                            <group string="Spinning Allowance">
+                                <field name="get_spinning_allowance"/>
+                                <field name="spinning_allowance_amount" attrs="{'required': [('get_spinning_allowance','=', True)], 'invisible': [('get_spinning_allowance','!=', True)]}"/>
+                            </group>
+                            <group string="Spinning Host Allowance">
+                                <field name="get_spinning_host_allowance"/>
+                                <field name="num_days" attrs="{'required': [('get_spinning_host_allowance','=', True)], 'invisible': [('get_spinning_host_allowance','!=', True)]}"/>
+                                <field name="spinning_host_allowance" attrs="{'required': [('get_spinning_host_allowance','=', True)], 'invisible': [('get_spinning_host_allowance','!=', True)]}"/>
+                                <field name="spinning_host_allowance_amount" attrs="{'invisible': [('get_spinning_host_allowance','!=', True)]}"/>
+                            </group>
+                            <group string="Supervisor Allowance">
+                                <field name="get_supervisor_allowance"/>
+                                <field name="supervisor_or_supervisor_assistant" attrs="{'required': [('get_supervisor_allowance', '=', True)], 'invisible': [('get_supervisor_allowance', '!=', True)]}"/>
+                                <field name="supervisor_allowance_amount" attrs="{'required': [('get_supervisor_allowance', '=', True)], 'invisible': [('get_supervisor_allowance', '!=', True)]}"/>
+                            </group>
+                            <group string="Supervisor Evaluation Allowance">
+                                <field name="get_monthly_supervisor_eval_allowance"/>
+                                <field name="total_supervisor_rate" attrs="{'required': [('get_monthly_supervisor_eval_allowance','=', True)], 'invisible': [('get_monthly_supervisor_eval_allowance','!=', True)]}"/>
+                                <field name="total_supervisor_allowance_before_eval" attrs="{'required': [('get_monthly_supervisor_eval_allowance','=', True)], 'invisible': [('get_monthly_supervisor_eval_allowance','!=', True)]}"/>
+                                <field name="total_supervisor_allowance_after_eval" attrs="{'required': [('get_monthly_supervisor_eval_allowance','=', True)], 'invisible': [('get_monthly_supervisor_eval_allowance','!=', True)]}"/>
+                            </group>
+                            <group string="Supervisor Assistant Evaluation Allowance">
+                                <field name="get_monthly_supervisor_assistant_eval_allowance"/>
+                                <field name="total_supervisor_assistant_rate" attrs="{'required': [('get_monthly_supervisor_assistant_eval_allowance','=', True)], 'invisible': [('get_monthly_supervisor_assistant_eval_allowance','!=', True)]}"/>
+                                <field name="total_supervisor_assistant_allowance_before_eval" attrs="{'required': [('get_monthly_supervisor_assistant_eval_allowance','=', True)], 'invisible': [('get_monthly_supervisor_assistant_eval_allowance','!=', True)]}"/>
+                                <field name="total_supervisor_assistant_allowance_after_eval" attrs="{'required': [('get_monthly_supervisor_assistant_eval_allowance','=', True)], 'invisible': [('get_monthly_supervisor_assistant_eval_allowance','!=', True)]}"/>
+                            </group>
+                            <group string="Driving Allowance">
+                                <field name="get_drive_allowance"/>
+                                <field name="driver_type" attrs="{'required': [('get_drive_allowance','=', True)], 'invisible': [('get_drive_allowance','!=', True)]}"/>
+                                <field name="license_type" attrs="{'required': [('get_drive_allowance','=', True)], 'invisible': [('get_drive_allowance','!=', True)]}"/>
+                                <field name="drive_allowance_amount" attrs="{'invisible': [('get_drive_allowance','!=', True)]}"/>
+                                <field name="manager_bonus" attrs="{'required': [('driver_type','=', 'manager')], 'invisible': [('driver_type','!=', 'manager')]}"/>
+                                <field name="total_drive_allowance" attrs="{'required': [('get_drive_allowance','=', True)], 'invisible': [('get_drive_allowance','!=', True)]}"/>
+                            </group>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add insurance fields to the hr.employee.view.form -->
+    <record id="hr_employee_insurance_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.insurance.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//sheet/notebook/page[@name='allowance']" position="after">
+                    <page string="Insurance" name="insurance" groups="hr.group_hr_manager">
+                        <group>
+                            <group name="left_group">
+                                <group string="Insurance Details">
+                                    <field name="insurance_salary"/>
+                                    <field name="insurance_salary_after_exempt"/>
+                                    <field name="employee_share_type"/>
+                                    <field name="amount" attrs="{'required': [('employee_share_type','=', 'fixed_amount')], 'invisible': [('employee_share_type','!=', 'fixed_amount')]}"/>
+                                </group>
+                            </group>
+                            <group name="right_group">
+                                <group string="Company and Employee Share">
+                                    <field name="employee_share_amount"/>
+                                    <field name="company_share_amount"/>
+                                </group>
+                                <group string="Emergency Fund">
+                                    <field name="basic_for_emergency_fund"/>
+                                    <field name="emergency_fund_amount"/>
+                                </group>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- Add taxes fields to the hr.employee.view.form -->
+    <record id="hr_employee_taxes_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.taxes.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@name='allowance']" position="after">
+                <page string="Taxes" name="taxes" groups="hr_payroll.group_hr_payroll_manager">
+                    <group>
+                        <group name="right_group">
+                            <group string="Salary Details">
+                                <field name="bonus"/>
+                                <field name="total_gross_plus_allowances"/>
+                                <field name="salary_after_allowances_and_deductions"/>
+                            </group>
+                            <group string="Tax Details">
+                                <field name="monthly_personal_exempted"/>
+                                <field name="monthly_tax_base"/>
+                                <field name="yearly_tax_base"/>
+                                <field name="employee_salary_category"/>
+                                <field name="employee_yearly_tax"/>
+                                <field name="employee_monthly_tax"/>
+                            </group>
+                        </group>
+                        <group name="left_group">
+                            <group string="Allowances Details">
+                                <field name="total_allowances"/>
+                                <field name="exempted_allowances"/>
+                                <field name="total_allowances_after_exempt"/>
+                            </group>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>
