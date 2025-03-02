@@ -203,84 +203,84 @@
         </field>
     </record>
 
-    <record id="view_school_student_form" model="ir.ui.view">
-        <field name="name">school.view.form</field>
-        <field name="model">school.student</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <header>
-                        <button name="exists_method" string="Exists Method" type="object"
-                                class="oe_highlight"/>
-                        <button name="get_meta_data_method" string="Meta Data Method" type="object"
-                                class="oe_highlight"/>
-                        <button name="fields_get_method" string="Fields Get Method" type="object"
-                                class="oe_highlight"/>
-                        <button name="read_group_method" string="Read Group Method" type="object"
-                                class="oe_highlight"/>
-                        <button name="env_orm_button" string="Env Method" type="object"
-                                class="oe_highlight"/>
-                        <button name="print_button" string="Print Report Button" type="object"
-                                class="oe_highlight"/>
-                        <button name="action_send_email" string="Send Email" type="object" class="oe_highlight"/>
-                        <button name="wizard_button" string="Wizard Button Using object" type="object"
-                                class="oe_highlight"/>
-                        <button name="%(student_fees_update_wizard_action)d" string="Wizard Button from action type"
-                                type="action" class="oe_highlight"/>
-                        <button name="custom_button_method" string="Custom Button" type="object" class="oe_highlight"/>
-                        <button name="special_command6_replace_many2many_field_with_new_existing_records" options="{'reload_on_button': True}"
-                                string="Special Command6 0 0" type="object" class="oe_highlight"/>
-                        <field name="state" widget="statusbar" statusbar_visible="done,draft,paid,progress" options="{'clickable':1}"/>
-                    </header>
-                    <br/>
-                    <notebook>
-                        <page string="Student Profile">
-                            <group>
-                                <group string="Student Info">
-                                    <field name="name" required="1" groups="school.student_mid_group"/>
-                                    <field name="id" groups="base.group_no_one"/>
-                                    <field name="roll_number" groups="school.student_mid_group"/>
-                                    <field name="address_id"
-                                           context="{'show_address': 1}"
-                                           options='{"always_reload": True}'/>
-                                    <!--                            <field name="school_st_id" widget="selection"/>-->
-                                    <field name="school_st_id"
-                                           domain="['|',('is_virtual_class','=',True),('school_type','!=',False)]"
-                                           options="{'no_create_edit':True,'no_open':True,'no_create':True}"/>
-                                    <!--                                           groups="school.student_mid_group"-->
-                                    <!--                                           context="{'active_test':True}"-->
-                                    <field name="address"/>
-                                    <field name="student_image"/>
-                                    <field name="hobby_ids" widget="many2many_checkboxes" context="{'active_test': False}"/>
-                                    <field name="hobbies_ids"/>
-                                </group>
-                                <group string="Student Fees">
-                                    <field name="currency_id"/>
-                                    <field name="student_fees"/>
-                                    <field name="total_fees" widget="monetary"/>
-                                    <field name="active"/>
-                                    <field name="birth_date" attrs="{'required':[('total_fees','=',1759925)]}"/>
-                                    <field name="ref_id"/>
-                                    <button name="share_facebook" string="Facebook" type="object" class="oe_highlight"/>
-                                </group>
-                            </group>
-                        </page>
-                        <page string="School Info">
-                            <group>
-                                <field name="school_st_id"/>
-                                <field name="name"/>
-                            </group>
-                        </page>
-                    </notebook>
-                    <button name="login_button" string="Login Button" type="object" class="oe_highlight"/>
-                </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" groups="base.group_user"/>
-                    <field name="message_ids"/>
-                </div>
-            </form>
-        </field>
-    </record>
+<!--    <record id="view_school_student_form" model="ir.ui.view">-->
+<!--        <field name="name">school.view.form</field>-->
+<!--        <field name="model">school.student</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <sheet>-->
+<!--                    <header>-->
+<!--                        <button name="exists_method" string="Exists Method" type="object"-->
+<!--                                class="oe_highlight"/>-->
+<!--                        <button name="get_meta_data_method" string="Meta Data Method" type="object"-->
+<!--                                class="oe_highlight"/>-->
+<!--                        <button name="fields_get_method" string="Fields Get Method" type="object"-->
+<!--                                class="oe_highlight"/>-->
+<!--                        <button name="read_group_method" string="Read Group Method" type="object"-->
+<!--                                class="oe_highlight"/>-->
+<!--                        <button name="env_orm_button" string="Env Method" type="object"-->
+<!--                                class="oe_highlight"/>-->
+<!--                        <button name="print_button" string="Print Report Button" type="object"-->
+<!--                                class="oe_highlight"/>-->
+<!--                        <button name="action_send_email" string="Send Email" type="object" class="oe_highlight"/>-->
+<!--                        <button name="wizard_button" string="Wizard Button Using object" type="object"-->
+<!--                                class="oe_highlight"/>-->
+<!--                        <button name="%(student_fees_update_wizard_action)d" string="Wizard Button from action type"-->
+<!--                                type="action" class="oe_highlight"/>-->
+<!--                        <button name="custom_button_method" string="Custom Button" type="object" class="oe_highlight"/>-->
+<!--                        <button name="special_command6_replace_many2many_field_with_new_existing_records" options="{'reload_on_button': True}"-->
+<!--                                string="Special Command6 0 0" type="object" class="oe_highlight"/>-->
+<!--                        <field name="state" widget="statusbar" statusbar_visible="done,draft,paid,progress" options="{'clickable':1}"/>-->
+<!--                    </header>-->
+<!--                    <br/>-->
+<!--                    <notebook>-->
+<!--                        <page string="Student Profile">-->
+<!--                            <group>-->
+<!--                                <group string="Student Info">-->
+<!--                                    <field name="name" required="1" groups="school.student_mid_group"/>-->
+<!--                                    <field name="id" groups="base.group_no_one"/>-->
+<!--                                    <field name="roll_number" groups="school.student_mid_group"/>-->
+<!--                                    <field name="address_id"-->
+<!--                                           context="{'show_address': 1}"-->
+<!--                                           options='{"always_reload": True}'/>-->
+<!--                                    &lt;!&ndash;                            <field name="school_st_id" widget="selection"/>&ndash;&gt;-->
+<!--                                    <field name="school_st_id"-->
+<!--                                           domain="['|',('is_virtual_class','=',True),('school_type','!=',False)]"-->
+<!--                                           options="{'no_create_edit':True,'no_open':True,'no_create':True}"/>-->
+<!--                                    &lt;!&ndash;                                           groups="school.student_mid_group"&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                           context="{'active_test':True}"&ndash;&gt;-->
+<!--                                    <field name="address"/>-->
+<!--                                    <field name="student_image"/>-->
+<!--                                    <field name="hobby_ids" widget="many2many_checkboxes" context="{'active_test': False}"/>-->
+<!--                                    <field name="hobbies_ids"/>-->
+<!--                                </group>-->
+<!--                                <group string="Student Fees">-->
+<!--                                    <field name="currency_id"/>-->
+<!--                                    <field name="student_fees"/>-->
+<!--                                    <field name="total_fees" widget="monetary"/>-->
+<!--                                    <field name="active"/>-->
+<!--                                    <field name="birth_date" attrs="{'required':[('total_fees','=',1759925)]}"/>-->
+<!--                                    <field name="ref_id"/>-->
+<!--                                    <button name="share_facebook" string="Facebook" type="object" class="oe_highlight"/>-->
+<!--                                </group>-->
+<!--                            </group>-->
+<!--                        </page>-->
+<!--                        <page string="School Info">-->
+<!--                            <group>-->
+<!--                                <field name="school_st_id"/>-->
+<!--                                <field name="name"/>-->
+<!--                            </group>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+<!--                    <button name="login_button" string="Login Button" type="object" class="oe_highlight"/>-->
+<!--                </sheet>-->
+<!--                <div class="oe_chatter">-->
+<!--                    <field name="message_follower_ids" groups="base.group_user"/>-->
+<!--                    <field name="message_ids"/>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
 
     <record id="view_school_hobby_form" model="ir.ui.view">
         <field name="name">school.hobby.view.form</field>

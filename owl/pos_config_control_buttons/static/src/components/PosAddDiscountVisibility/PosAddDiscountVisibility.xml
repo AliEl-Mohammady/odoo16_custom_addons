@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template">
+
+    <t t-name="NumpadWidget" owl="1" t-inherit="point_of_sale.NumpadWidget" t-inherit-mode="extension">
+        <xpath expr="//button[@t-att-disabled='!hasManualDiscount']" position="replace">
+<!--            <button t-if="env and env.pos and env.pos.visible_discount_control" class="input-button numpad-backspace" t-on-mousedown.prevent="() => this.sendInput('Backspace')">-->
+<!--                <img style="pointer-events: none;"-->
+<!--                     src="/point_of_sale/static/src/img/backspace.png" width="24"-->
+<!--                     height="21" alt="Backspace"/>-->
+<!--            </button>-->
+            <button t-if="env and env.pos and env.pos.visible_discount_control" class="mode-button" t-att-class="{
+                        'selected-mode': props.activeMode === 'discount',
+                        'disabled-mode': !hasManualDiscount
+                    }"
+                    t-att-disabled="!hasManualDiscount"
+                    t-on-click="() => this.changeMode('discount')">% Disc</button>
+            <button t-else="">X</button>
+        </xpath>
+    </t>
+</templates>

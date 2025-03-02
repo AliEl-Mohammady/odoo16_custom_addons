@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_external_libraries.OwlDashboardExternalLibView" owl="1">
+        <Layout display="display">
+            <div class="row vh-100 px-5 overflow-y-auto">
+                <div class="col-lg-6 p-5">
+                    <div class="h2 mb-3">International Telephone Input </div>
+                    <div class="mb-3">
+                        <label class="form-label me-2">Phone</label>
+                        <input class="form-control" type="tel" t-ref="phone"/>
+                    </div>
+                    <div t-if="state.validNumber==false" class="alert alert-danger">Phone in not valid</div>
+                    <div t-if="state.validNumber==true" class="alert alert-success">Phone in valid</div>
+                    <button class="btn btn-primary" t-on-click="validate">Validate</button>
+                </div>
+                <div class="col-lg-6 p-5">
+                    <div class="h2 mb-3">Upload Files </div>
+                    <div class="mb-3">
+                        <label class="form-label me-2">FilePond</label>
+                        <input class="form-control" type="file" t-ref="file"/>
+                    </div>
+                </div>
+
+            </div>
+
+        </Layout>
+    </t>
+</templates>

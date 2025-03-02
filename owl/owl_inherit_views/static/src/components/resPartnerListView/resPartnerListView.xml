@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="owl_inherit_views.ResPartner.Buttons" t-inherit="web.ListView.Buttons" owl="1">
+        <xpath expr="//t[contains(@t-if,'isExportEnable')]" position="before">
+            <button type="button" class="btn btn-primary  me-2 ms-2" t-on-click="openSalesOrders">
+                Sales Order
+            </button>
+            <button class="btn btn-secondary border" type="button" >
+                Purchase order
+            </button>
+            <button class="btn btn-success border ms-2" type="button" >
+                Apply All
+            </button>
+        </xpath>
+    </t>
+</templates>

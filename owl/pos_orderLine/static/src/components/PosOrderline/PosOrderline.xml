@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="InheritOrderLine" owl="1">
+        <div style="display:inline">
+            <button class="oe_primary m-5" style="margin:5px" t-on-click="onClick">Add Employees</button>
+<!--            <t t-esc="props.line.get_full_product_name()"/>-->
+        </div>
+    </t>
+
+    <t t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//ul[hasclass('info-list')]//t//li[hasclass('info')]//em//t" position="after">
+            <InheritOrderLine line="props.line"/>
+            <t t-if="props.line.product.barcode">
+                <t t-esc="props.line.product.barcode"/>
+            </t>
+        </xpath>
+    </t>
+
+</templates>

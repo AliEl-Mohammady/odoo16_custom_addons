@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="owl_fields_widget.RangeField" owl="1">
+        <div>
+           <label for="customRange1" class="form-label"><t t-esc="props.value"/><t t-esc="currency_id"/></label>
+            <input type="range" class="form-range" id="customRange1" t-on-change="(e)=>props.update(e.target.value)"
+                   t-att-value="props.value"/>
+        </div>
+    </t>
+</templates>

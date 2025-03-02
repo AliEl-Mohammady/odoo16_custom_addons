@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="SetEmployeePopup" owl="1">
+        <div class="popup popup-error" >
+            <p class="title" style="font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                <t t-esc="props.title" />
+            </p>
+            <div class="body" style="margin-bottom: 20px;font-size:25px">
+                <div class="mb-3" style="margin:10px;">
+                    <label for="select1" class="form-label">Employee 1</label>
+                    <select id="select1" class="form-select" style="margin-left:10px">
+                        <option value="">Select an option</option>
+                        <option>Select 2</option>
+                    </select>
+                </div>
+                <div class="mb-3" style="margin:10px;">
+                    <label for="select1" class="form-label">Employee 2</label>
+                    <select id="select1" class="form-select" style="margin-left:10px">
+                        <option value=""></option>
+<!--                         <t t-foreach="env.pos.employees_data" t-as="employee"-->
+<!--                               t-key="employee.id">-->
+<!--                                <option t-att-value="employee.id">-->
+<!--                                    <t t-esc="employee.name"/>-->
+<!--                                </option>-->
+<!--                        </t>-->
+                    </select>
+                </div>
+                <div class="mb-3" style="margin:10px;">
+                    <label for="select1" class="form-label">Employee 3</label>
+                    <select id="select1" class="form-select" style="margin-left:10px">
+                        <option value="">Select an option</option>
+                        <option>Select 2</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="footer d-flex justify-content-between">
+                <button class="btn btn-secondary" t-on-click="cancel" style="width: 45%;">Cancel</button>
+                <button class="btn btn-primary" t-on-click="add" style="width: 45%;">Add</button>
+            </div>
+        </div>
+</t>
+
+</templates>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_dashboard_create_services.OwlDashboardView" owl="1">
+        <Layout display="display">
+            <h1>Owl Dashboard</h1>
+            <div class="row p-3">
+                <div class="col col-lg-3">
+                    <h2>Basic Services</h2>
+                    <table class="table border">
+                        <tr>
+                            <th>Type</th><th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>string</td><td><t t-esc="owlBasicServices.string"/></td>
+                        </tr>
+                        <tr>
+                            <td>Float</td><td><t t-esc="owlBasicServices.float"/></td>
+                        </tr>
+                        <tr>
+                            <td>Integer</td><td><t t-esc="owlBasicServices.integer"/></td>
+                        </tr>
+                        <tr>
+                            <td>Function</td><td><t t-esc="owlBasicServices.function()"/></td>
+                        </tr>
+                        <tr>
+                            <td>Normal Function</td><td><t t-esc="owlBasicServices.normalFunction"/></td>
+                        </tr>
+                        <tr>
+                            <td>Arrow Function</td><td><t t-esc="owlBasicServices.arrowFunction"/></td>
+                        </tr>
+                        <tr>
+                            <td>Html</td><td><t t-out="owlBasicServices.html"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col col-lg-3">
+                    <h2>Dashboard Service</h2>
+                    <div class="d-flex flex-row p-3 mb-3 border rounded text-center align-items-center justify-content-center">
+                        <div class="d-flex align-items-center">
+                            <div style="font-size: 60pt">
+                                <span class="fa fa-users"/>
+                            </div>
+                            <div class="ms-5">
+                                <h3 class="m-0">Partners</h3>
+                                <div class="text-primary lh-1" style="font-size: 50pt"><t t-esc="dashboardData.partners"/> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row p-3 mb-3 border rounded text-center align-items-center justify-content-center">
+                        <div class="d-flex align-items-center">
+                            <div style="font-size: 60pt">
+                                <span class="fa fa-user"/>
+                            </div>
+                            <div class="ms-5">
+                                <h3 class="m-0">Customers</h3>
+                                <div class="text-primary lh-1" style="font-size: 50pt"><t t-esc="dashboardData.customers"/></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row p-3 mb-3 border rounded text-center align-items-center justify-content-center">
+                        <div class="d-flex align-items-center">
+                            <div style="font-size: 60pt">
+                                <span class="fa fa-user"/>
+                            </div>
+                            <div class="ms-5">
+                                <h3 class="m-0">Individuals</h3>
+                                <div class="text-primary lh-1" style="font-size: 50pt"><t t-esc="dashboardData.individuals"/></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row p-3 mb-3 border rounded text-center align-items-center justify-content-center">
+                        <div class="d-flex align-items-center">
+                            <div style="font-size: 60pt">
+                                <span class="fa fa-map-marker"/>
+                            </div>
+                            <div class="ms-5">
+                                <h3 class="m-0">Locations</h3>
+                                <div class="text-primary lh-1" style="font-size: 50pt"><t t-esc="dashboardData.locations"/></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-3">
+                    <h2>Simple Mail Service</h2>
+                    <button class="btn btn-primary" t-on-click="openSimpleMailServices">Send Mail Service</button>
+                </div>
+                </div>
+        </Layout>
+    </t>
+</templates>

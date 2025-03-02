@@ -1,0 +1,137 @@
+
+
+html {
+    height: 100%;
+}
+
+.todo-list-container {
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* To-Do App Styling */
+.todo-app {
+    background: #ffffff;
+    border-radius: 25px;
+    max-width: 750px;
+    width: 90%;
+    padding: 40px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 30px auto; /* Simplified margins */
+}
+
+
+/* Title and Subtitle */
+.app-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Input Field and Add Button */
+.input-group .form-control {
+    border: 2px solid #0288d1;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+.input-group .btn-add {
+    background: #0288d1;
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 25px;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.input-group .btn-add:hover {
+    background: #01579b;
+    box-shadow: 0 4px 10px rgba(2, 136, 209, 0.4);
+}
+
+/* Task List */
+.list-group-item {
+    background-color: #f1f8e9;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+    color: #333;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #dcedc8;
+    transform: scale(1.03);
+}
+
+/* Edit Button */
+.btn-warning {
+    background-color: #ffb74d;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.btn-warning:hover {
+    background-color: #ff9800;
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
+}
+
+/* Remove Button */
+.btn-danger {
+    background-color: #e57373;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+    box-shadow: 0 4px 8px rgba(211, 47, 47, 0.4);
+
+}
+
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 2rem;
+    }
+
+    .input-group .form-control {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .input-group .btn-add {
+        font-size: 1rem;
+        padding: 8px 20px;
+    }
+
+    .list-group-item {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}
+

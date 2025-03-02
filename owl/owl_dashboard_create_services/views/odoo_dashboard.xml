@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_owl_dashboard_lists_js_a" model="ir.actions.client">
+            <field name="name">Odoo Dashboard OwL</field>
+            <field name="tag">owl_dashboard_create_services.action_odoo_dashboard_owl_js</field>
+        </record>
+    </data>
+
+    <menuitem name="OWl Dashboard" id="menu_odoo_dashboard_tutorial_a" sequence="10">
+        <menuitem name="Dashboard Custom Service" id="menu_owl_dashboard_list_a" sequence="10" action="action_owl_dashboard_lists_js_a"/>
+    </menuitem>
+</odoo>

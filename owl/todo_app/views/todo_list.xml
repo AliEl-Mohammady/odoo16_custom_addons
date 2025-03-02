@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="owl_todo_form_view_a" model="ir.ui.view">
+            <field name="name">owl.todo.tree.view</field>
+            <field name="model">owl.todo.list.app</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name" />
+                    <field name="time"/>
+                    <field name="isCompleted" widget="check_box"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="owl_todo_form_view_a" model="ir.ui.view">
+            <field name="name">owl.todo.list.app.form.views</field>
+            <field name="model">owl.todo.list.app</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="time"/>
+                            </group>
+                            <group>
+                                <field name="isCompleted" widget="toggle"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_todo_owl_list_a" model="ir.actions.act_window">
+            <field name="name">Todo List</field>
+            <field name="res_model">owl.todo.list.app</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_owl_todo_lists_js_a" model="ir.actions.client">
+            <field name="name">Todo List owl</field>
+            <field name="tag">todo_app.action_todo_list_owl_js</field>
+        </record>
+    </data>
+
+    <menuitem name="Todo App" id="menu_todo_owl_tutorial_a" sequence="10">
+        <menuitem name="Todo List" id="menu_owl_todo_list_a" sequence="10" action="action_todo_owl_list_a"/>
+        <menuitem name="Todo List OWL" id="menu_owl_todo_list_js_a" sequence="10" action="action_owl_todo_lists_js_a"/>
+    </menuitem>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_owl_dashboard_external_library_lists_js_a" model="ir.actions.client">
+            <field name="name">Odoo Dashboard OwL</field>
+            <field name="tag">owl_external_libraries.action_odoo_dashboard_external_library_owl_js</field>
+        </record>
+    </data>
+
+    <menuitem name="OWl External Libraries" id="menu_odoo_dashboard_tutorial_external_a" sequence="10">
+        <menuitem name="Dashboard Custom Library" id="menu_owl_dashboard_external_library_list_a" sequence="10" action="action_owl_dashboard_external_library_lists_js_a"/>
+    </menuitem>
+</odoo>

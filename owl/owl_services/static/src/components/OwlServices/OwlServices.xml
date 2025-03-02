@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_services.OwlServicesView" owl="1">
+        <div t-attf-class="vh-100 {{state.dark_mode==true ?'bg-dark': ''}}">
+            <Layout display="display">
+                <div class="row">Odoo Services Using Owl</div>
+                <div class="row">
+                    <div class="col m-2">
+                        <button class="btn btn-primary" t-on-click="showNotification">Notification</button>
+                    </div>
+                    <div class="col m-2">
+                        <button class="btn btn-primary" t-on-click="showDialog">Show Dialog</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="showEffect">Show Effect</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="cookieServicesFunc">Cookie Services</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="getHttpServices">Get Http Services</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="postHttpServices">Post Http Services</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="rpcServices">Rpc Services</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="ormServices">ORM Services</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="actionServices">Action Services</button>
+                    </div>
+                    <div class="col m-3">
+                        <button t-attf-class="btn {{ state.bg_success == '1' ? 'btn-success' : 'btn-primary' }} ms-2" t-on-click="getRouterService">Router Service</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="userServices">User Services</button>
+                    </div>
+                    <div class="col m-3">
+                        <button class="btn btn-primary" t-on-click="companyServices">Company Services</button>
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <table class="table table-bordered table-hover table-striped" t-if="state.get_http_data">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>body</th>
+                                <th>UserId</th>
+                                <th>views</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through records -->
+                            <t t-foreach="state.get_http_data" t-as="record" t-key="record.id">
+                                <tr>
+                                    <td><t t-esc="record.id" /></td>
+                                    <td><t t-esc="record.title" /></td>
+                                    <td><t t-esc="record.body" /></td>
+                                    <td><t t-esc="record.userId" /></td>
+                                    <td><t t-esc="record.views" /></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row m-2">
+                    <table class="table " t-if="state.post_http_data">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through records -->
+                                <tr>
+                                    <td><t t-esc="state.post_http_data.id" /></td>
+                                    <td><t t-esc="state.post_http_data.title" /></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row m-2">
+                    <table class="table table-bordered table-hover table-striped" t-if="state.rpc_data">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>User</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through records -->
+                            <t t-foreach="state.rpc_data" t-as="record" t-key="record.id">
+                                <tr>
+                                    <td><t t-esc="record.id" /></td>
+                                    <td><t t-esc="record.name" /></td>
+                                    <td><t t-esc="record.email" /></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row m-2">
+                    <table class="table table-bordered table-hover table-striped" t-if="state.orm_data">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>User</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through records -->
+                            <t t-foreach="state.orm_data" t-as="record" t-key="record.id">
+                                <tr>
+                                    <td><t t-esc="record.id" /></td>
+                                    <td><t t-esc="record.name" /></td>
+                                    <td><t t-esc="record.email" /></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div><t t-esc="this.state.user_data"/> </div>
+                <div><t t-esc="this.state.company_data"/> </div>
+
+            </Layout>
+        </div>
+    </t>
+</templates>

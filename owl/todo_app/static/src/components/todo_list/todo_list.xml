@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="todo_app.TodoList" owl="1">
+        <div class="todo-list-container" style="min-height: 100vh; overflow-y: auto;">
+            <div class="todo-app p-5 shadow-lg rounded-4">
+                <h1 class="text-center app-title">To-Do App OWL</h1>
+                <p class="text-center subtitle">Stay on top of your tasks and don't lose your appointments!</p>
+                <div class="input-group my-4">
+                    <input type="text" class="form-control" placeholder="Task Name" t-model="state.task.name" />
+                    <input type="datetime-local" class="form-control" placeholder="Task Time" t-model="state.task.time" />
+                    <button class="btn btn-add" t-on-click="addTask">Add Task</button>
+                </div>
+                <ul class="list-group">
+                    <t t-foreach="state.taskList" t-as="record" t-key="record.id">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div t-if="state.editingTaskId === record.id" class="d-flex align-items-center">
+                                <input type="text" class="form-control" placeholder="Task Name" t-model="state.taskEdit.name" />
+                                <input type="datetime-local" class="form-control" placeholder="Task Time" t-model="state.taskEdit.time" />
+                            </div>
+                            <div t-if="state.editingTaskId !== record.id" class="d-flex align-items-center">
+                                <div class="text-start me-2" style="font-size:25px">
+                                  <input  type="checkbox" value="" t-att-id="record.id" t-att-checked="record.isCompleted" t-on-click="(e)=>this.toggleTask(e,record)"/>
+                                </div>
+                                <span t-attf-class="#{record.isCompleted ? 'text-decoration-line-through' : ''}">
+                                    <t t-esc="record.name" />
+                                </span>
+                            </div>
+                            <div>
+                                <span t-if="record.time and state.editingTaskId !== record.id" class="text-end me-4">
+                                    <t t-esc="record.time" />
+                                </span>
+                                <button t-if="state.editingTaskId === record.id"
+                                        class="btn btn-sm btn-success bi bi-check-square-fill"
+                                        t-on-click="()=>this.saveTask(record)">Save Changes</button>
+                                <button t-if="state.editingTaskId !== record.id" class="btn btn-sm me-2 btn-warning bi bi-pencil"
+                                        t-on-click="()=>this.editTask(record)">Edit</button>
+                                <button t-if="state.editingTaskId !== record.id" class="btn btn-sm me-2 btn-danger bi bi-trash"
+                                        t-on-click="()=>this.deleteTask(record)">Delete</button>
+                            </div>
+                        </li>
+                    </t>
+                </ul>
+            </div>
+        </div>
+    </t>
+</templates>

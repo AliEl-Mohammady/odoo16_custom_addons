@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates>
+    <t t-name="owl_Hijri_Date.HijriDatePickerField" owl="1">
+        <t t-if="props.readonly">
+            <span t-out="formattedValue"/>
+        </t>
+        <t t-else="">
+            <div class="position-relative">
+                <input type="text" class="o_input" t-att-id="HijriDatePickerId" t-on-blur="(e)=>this.onBlur(e)" t-att-value="formattedValue"/>
+            </div>
+        </t>
+    </t>
+</templates>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="owl_list_view.School.Buttons" t-inherit="web.ListView.Buttons" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='nbSelected']" position="inside">
+            <button t-if="model.root.resModel='school.student'" type="button" class="btn btn-primary  me-2 ms-2" t-on-click="editSchoolStudent">
+                Edit School
+            </button>
+        </xpath>
+    </t>
+</templates>
